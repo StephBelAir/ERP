@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  database:
+    image: mysql:8.0
+    restart: always
+    container_name: erp_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'erpDb'
+    ports:
+      - 3315:3306
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    container_name: erp_phpmyadmin
+    ports:
+      - 9090:80
+    environment:
+      PMA_HOST: erp_db
