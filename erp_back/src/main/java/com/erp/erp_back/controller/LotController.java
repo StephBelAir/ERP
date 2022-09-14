@@ -17,10 +17,6 @@ public class LotController {
 
 
     @RequestMapping(value = "/lots", method = RequestMethod.GET)
-    /* public Iterable<Lot> getAllLots(){
-        Iterable<Lot> lotsList = lotRepository.findAll();
-        return lotsList;
-    } */
 
     public Iterable<Lot> getAllLots() throws Exception{
         try{
