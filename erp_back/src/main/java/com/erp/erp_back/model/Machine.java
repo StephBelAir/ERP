@@ -12,6 +12,7 @@ public class Machine {
     @Id
     protected int machineId;
     protected LocalDateTime productionTime;
+
     // Format à confirmer
     protected int processOrder;
 

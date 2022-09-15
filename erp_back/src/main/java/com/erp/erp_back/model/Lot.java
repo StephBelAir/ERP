@@ -20,7 +20,7 @@ public class Lot {
     public Lot() {
     }
 
-    public Lot(int id,int quantity, int length, int productId, int processId) {
+    public Lot(int id, int quantity, int length, int productId, int processId) {
         this.id = id;
         this.quantity = quantity;
         this.length = length;
@@ -31,30 +31,39 @@ public class Lot {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public int getQuantity() {
         return quantity;
     }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
     public int getLength() {
         return length;
     }
+
     public void setLength(int lenght) {
         this.length = lenght;
     }
+
     public int getProductId() {
         return productId;
     }
+
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
     public int getProcessId() {
         return processId;
     }
+
     public void setProcessId(int processId) {
         this.processId = processId;
     }

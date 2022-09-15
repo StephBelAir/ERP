@@ -18,12 +18,11 @@ public class LotController {
 
     @RequestMapping(value = "/lots", method = RequestMethod.GET)
 
-    public Iterable<Lot> getAllLots() throws Exception{
-        try{
+    public Iterable<Lot> getAllLots() throws Exception {
+        try {
             Iterable<Lot> lotsList = lotRepository.findAll();
-            return  lotsList;
-        }
-        catch (Exception ex) {
+            return lotsList;
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         return null;

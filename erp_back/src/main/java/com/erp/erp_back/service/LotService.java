@@ -4,8 +4,8 @@ import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.repository.LotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-// = DTO
 
+// = DTO
 @Service
 public class LotService {
     protected int id;
@@ -16,21 +16,47 @@ public class LotService {
 
     static LotRepository lotRepository;
 
-    public LotService(){}
+    public LotService() {
+    }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public int getLength() { return length; }
-    public void setLength(int length) { this.length = length; }
+    public int getQuantity() {
+        return quantity;
+    }
 
-    public int getProductId() { return productId; }
-    public void setProductId(int productId) { this.productId = productId; }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-    public int getProcessId() { return processId; }
-    public void setProcessId(int processId) { this.productId = processId; }
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public int getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(int processId) {
+        this.productId = processId;
+    }
 
 }

@@ -20,7 +20,8 @@ public class Product {
     protected LocalDateTime endDate;
     protected LocalDateTime actualEndDate;
 
-    public Product() {}
+    public Product() {
+    }
 
     public Product(int width, String type, int specialType, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate) {
         this.width = width;
