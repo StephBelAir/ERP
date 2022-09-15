@@ -28,7 +28,7 @@ public class LotController {
     }
 
     @ApiOperation(value = "Récupère UN lot grâce à son ID")
-    @RequestMapping({"/lots/{id}"})
+    @GetMapping({"/lots/{id}"})
     @ResponseBody
     public Lot getLotById(@PathVariable int id) { return this.lotRepository.findById(id); }
 
