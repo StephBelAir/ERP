@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface LotRepository extends JpaRepository<Lot, Integer> {
     List<Lot> findAll();
+    Lot findById(int id);
 }

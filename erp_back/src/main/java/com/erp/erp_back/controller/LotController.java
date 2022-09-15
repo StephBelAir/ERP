@@ -3,10 +3,7 @@ package com.erp.erp_back.controller;
 import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.repository.LotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -17,7 +14,6 @@ public class LotController {
 
 
     @RequestMapping(value = "/lots", method = RequestMethod.GET)
-
     public Iterable<Lot> getAllLots() throws Exception {
         try {
             Iterable<Lot> lotsList = lotRepository.findAll();
@@ -27,5 +23,9 @@ public class LotController {
         }
         return null;
     }
+
+    @RequestMapping({"/lots/{id}"})
+    @ResponseBody
+    public Lot getLotById(@PathVariable int id) { return this.lotRepository.findById(id); }
 
 }
