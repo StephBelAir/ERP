@@ -16,7 +16,7 @@ public class ProcessController {
     private ProcessRepository processRepository;
 
     @ApiOperation(value = "Récupère TOUT les process existants")
-    @RequestMapping(value = "/process", method = RequestMethod.GET)
+    @GetMapping(value = "/process")
     public Iterable<Process> getAllProcess() throws Exception {
         try {
             Iterable<Process> processList = processRepository.findAll();
