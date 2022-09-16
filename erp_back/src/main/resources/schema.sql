@@ -12,10 +12,10 @@ CREATE TABLE lot
 CREATE TABLE process
 (
     processId     INT PRIMARY KEY,
-    processName   VARCHAR(11),
-    startDate     DATETIME,
-    endDate       DATETIME,
-    actualEndDate DATETIME
+    processName   VARCHAR(11) NOT NULL,
+    startDate     DATETIME NOT NULL,
+    endDate       DATETIME NOT NULL,
+    actualEndDate DATETIME NOT NULL
 );
 CREATE TABLE machine
 (
@@ -35,5 +35,3 @@ INSERT INTO machine
 VALUES (0, '2004-05-23T14:25:10', 1);
 INSERT INTO machine
 VALUES (1, '2004-05-23T14:25:10', 2);
-
-
