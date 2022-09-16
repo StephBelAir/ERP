@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 public class Machine {
 
     @Id
-
     protected int machineId;
     protected LocalDateTime productionTime;
 

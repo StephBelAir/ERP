@@ -16,7 +16,7 @@ public class ProcessController {
     private ProcessRepository processRepository;
 
     @ApiOperation(value = "Récupère TOUT les process existants")
-    @GetMapping(value = "/process")
+    @GetMapping(value = "/processes")
     public Iterable<Process> getAllProcess() throws Exception {
         try {
             Iterable<Process> processList = processRepository.findAll();
@@ -29,7 +29,7 @@ public class ProcessController {
     }
 
     @ApiOperation(value = "Récupère UN process grâce à son ID")
-    @GetMapping({"/process/{id}"})
+    @GetMapping({"/processes/{id}"})
     @ResponseBody
     public Process getProcessById(@PathVariable int id) {
         return this.processRepository.findById(id);

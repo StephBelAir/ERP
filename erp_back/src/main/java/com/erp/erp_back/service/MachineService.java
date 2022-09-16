@@ -1,0 +1,44 @@
+package com.erp.erp_back.service;
+
+import com.erp.erp_back.repository.MachineRepository;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+
+// = DTO
+@Service
+public class MachineService {
+
+    protected int machineId;
+    protected LocalDateTime productionTime;
+    protected int processOrder;
+
+    static MachineRepository machineRepository;
+
+    public MachineService() {
+    }
+
+    public LocalDateTime getProductionTime() {
+        return productionTime;
+    }
+
+    public void setProductionTime(LocalDateTime productionTime) {
+        this.productionTime = productionTime;
+    }
+
+    public int getProcessOrder() {
+        return processOrder;
+    }
+
+    public void setProcessOrder(int processOrder) {
+        this.processOrder = processOrder;
+    }
+
+    public static MachineRepository getMachineRepository() {
+        return machineRepository;
+    }
+
+    public static void setMachineRepository(MachineRepository machineRepository) {
+        MachineService.machineRepository = machineRepository;
+    }
+}
