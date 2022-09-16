@@ -21,7 +21,6 @@ public class Machine {
     }
 
     /**
-     *
      * @param productionTime
      * @param processOrder
      */

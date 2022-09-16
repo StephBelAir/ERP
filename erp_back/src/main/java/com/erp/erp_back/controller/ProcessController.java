@@ -31,6 +31,8 @@ public class ProcessController {
     @ApiOperation(value = "Récupère UN process grâce à son ID")
     @GetMapping({"/process/{id}"})
     @ResponseBody
-    public Process getProcessById(@PathVariable int id) { return this.processRepository.findById(id); }
+    public Process getProcessById(@PathVariable int id) {
+        return this.processRepository.findById(id);
+    }
 
 }

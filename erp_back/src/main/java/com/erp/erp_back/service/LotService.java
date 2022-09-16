@@ -18,7 +18,6 @@ public class LotService {
     protected int processId;
 
 
-
     static LotRepository lotRepository;
 
     public LotService() {
