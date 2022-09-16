@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class Machine {
 
     @Id
+
     protected int machineId;
     protected LocalDateTime productionTime;
 
@@ -19,6 +20,11 @@ public class Machine {
     public Machine() {
     }
 
+    /**
+     *
+     * @param productionTime
+     * @param processOrder
+     */
     public Machine(LocalDateTime productionTime, int processOrder) {
         this.productionTime = productionTime;
         this.processOrder = processOrder;
