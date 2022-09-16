@@ -1,0 +1,6 @@
+com.erp.erp_back
+com.erp.erp_back.configuration
+com.erp.erp_back.controller
+com.erp.erp_back.model
+com.erp.erp_back.repository
+com.erp.erp_back.service
