@@ -12,18 +12,24 @@ public class Lot {
     protected int id;
     protected int quantity;
     protected int length;
-    protected int productId;
+    protected int width;
+    protected String productName;
+    protected String type;
+    protected int specialType;
     protected int processId;
 
 
     public Lot() {
     }
 
-    public Lot(int id, int quantity, int length, int productId, int processId) {
+    public Lot(int id, int quantity, int length, int width, String productName, String type, int specialType, int processId) {
         this.id = id;
         this.quantity = quantity;
         this.length = length;
-        this.productId = productId;
+        this.width = width;
+        this.productName = productName;
+        this.type = type;
+        this.specialType = specialType;
         this.processId = processId;
     }
 
@@ -47,16 +53,40 @@ public class Lot {
         return length;
     }
 
-    public void setLength(int lenght) {
-        this.length = lenght;
+    public void setLength(int length) {
+        this.length = length;
     }
 
-    public int getProductId() {
-        return productId;
+    public int getWidth() {
+        return width;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getSpecialType() {
+        return specialType;
+    }
+
+    public void setSpecialType(int specialType) {
+        this.specialType = specialType;
     }
 
     public int getProcessId() {

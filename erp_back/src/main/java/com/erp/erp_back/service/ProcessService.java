@@ -1,37 +1,22 @@
-package com.erp.erp_back.model;
+package com.erp.erp_back.service;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.erp.erp_back.repository.ProcessRepository;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "process")
-public class Process {
+// = DTO
+@Service
+public class ProcessService {
 
-    @Id
-    protected int processId;
     protected String processName;
     protected LocalDateTime startDate;
     protected LocalDateTime endDate;
     protected LocalDateTime actualEndDate;
 
-    public Process() {
-    }
+    static ProcessRepository processRepository;
 
-    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate) {
-        this.processName = processName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.actualEndDate = actualEndDate;
-    }
-
-    public int getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(int processId) {
-        this.processId = processId;
+    public ProcessService() {
     }
 
     public String getProcessName() {
@@ -64,5 +49,13 @@ public class Process {
 
     public void setActualEndDate(LocalDateTime actualEndDate) {
         this.actualEndDate = actualEndDate;
+    }
+
+    public static ProcessRepository getProcessRepository() {
+        return processRepository;
+    }
+
+    public static void setProcessRepository(ProcessRepository processRepository) {
+        ProcessService.processRepository = processRepository;
     }
 }

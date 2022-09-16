@@ -14,7 +14,6 @@ public class Product {
     protected int productId;
     protected int width;
     protected String type;
-
     protected int specialType;
     protected LocalDateTime startDate;
     protected LocalDateTime endDate;
