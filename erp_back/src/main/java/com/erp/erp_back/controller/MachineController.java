@@ -46,10 +46,19 @@ public class MachineController {
     @ApiOperation(value = "Ajoute UNE machine")
     @PostMapping(value = "/machines/add")
     @ResponseBody
-    public Machine addMachine(@RequestBody MachineService machineService){
-        Machine machine = machineService.addMachine(machineService);
-        return this.machineRepository.save(machine);
+    public List<Machine> creatUser(@RequestBody Machine machineService) throws Exception{
+        try{
+            machineRepository.save(machineService);
+            List<Machine> machines = machineRepository.findAll();
+            return  machines;
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
+
+    /*--====================  Delete   ====================--*/
 
 
 
