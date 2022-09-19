@@ -20,6 +20,14 @@ public class MachineService {
     public MachineService() {
     }
 
+    public int getMachineId() {
+        return machineId;
+    }
+
+    public void setMachineId(int machineId) {
+        this.machineId = machineId;
+    }
+
     public LocalDateTime getProductionTime() {
         return productionTime;
     }
@@ -54,6 +62,11 @@ public class MachineService {
 
     public static Machine addMachine(MachineService machineService) {
         Machine machine = new Machine( machineService.getProductionTime(), machineService.getProcessOrder(), machineService.getMachineType());
+        return machine;
+    }
+
+    public static Machine editMachine(MachineService machineService) {
+        Machine machine = new Machine(machineService.getMachineId(), machineService.getProductionTime(), machineService.getProcessOrder(), machineService.getMachineType());
         return machine;
     }
 }

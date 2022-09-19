@@ -38,6 +38,13 @@ public class Machine implements Serializable {
         this.machineType = machineType;
     }
 
+    public Machine(int machineId, LocalDateTime productionTime, int processOrder, String machineType) {
+        this.machineId = machineId;
+        this.productionTime = productionTime;
+        this.processOrder = processOrder;
+        this.machineType = machineType;
+    }
+
     public int getMachineId() {
         return machineId;
     }

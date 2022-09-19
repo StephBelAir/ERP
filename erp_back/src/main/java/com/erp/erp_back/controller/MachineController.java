@@ -74,5 +74,22 @@ public class MachineController {
         return null;
     }
 
+    /*--====================  Update   ====================--*/
+
+    @ApiOperation(value = "Modifie UNE machine")
+    @PutMapping (value = "/machines")
+    @ResponseBody
+    public List<Machine> updateMachine(@RequestBody MachineService machineService)throws Exception{
+        try {
+            Machine machine = MachineService.editMachine(machineService);
+            machineRepository.save(machine);
+            List<Machine> machines = machineRepository.findAll();
+            return machines;
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
 
 }
