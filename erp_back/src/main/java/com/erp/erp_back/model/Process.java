@@ -1,29 +1,42 @@
 package com.erp.erp_back.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Transactional
+@JsonSerialize
 @Table(name = "process")
-public class Process {
+public class Process implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int processId;
     protected String processName;
     protected LocalDateTime startDate;
     protected LocalDateTime endDate;
     protected LocalDateTime actualEndDate;
 
+    @OneToMany(targetEntity = Machine.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    protected List<Machine> machine = new ArrayList<>();
+
     public Process() {
     }
 
-    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate) {
+    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate, List<Machine> machine) {
         this.processName = processName;
         this.startDate = startDate;
         this.endDate = endDate;
         this.actualEndDate = actualEndDate;
+        this.machine = machine;
     }
 
     public int getProcessId() {
@@ -64,5 +77,13 @@ public class Process {
 
     public void setActualEndDate(LocalDateTime actualEndDate) {
         this.actualEndDate = actualEndDate;
+    }
+
+    public List<Machine> getMachine() {
+        return machine;
+    }
+
+    public void setMachine(List<Machine> machine) {
+        this.machine = machine;
     }
 }

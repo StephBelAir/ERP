@@ -1,15 +1,22 @@
 package com.erp.erp_back.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Transactional
+@JsonSerialize
 @Table(name = "machine")
-public class Machine {
+public class Machine implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int machineId;
     protected LocalDateTime productionTime;
 

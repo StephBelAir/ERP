@@ -1,14 +1,20 @@
 package com.erp.erp_back.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@JsonSerialize
 @Entity
-@Table(name = "lot")
-public class Lot {
+@Transactional
+public class Lot implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
     protected int quantity;
     protected int length;
@@ -16,21 +22,22 @@ public class Lot {
     protected String productName;
     protected String type;
     protected int specialType;
-    protected int processId;
+
+    @ManyToOne(targetEntity = Process.class, fetch = FetchType.LAZY)
+    protected Process process;
 
 
     public Lot() {
     }
 
-    public Lot(int id, int quantity, int length, int width, String productName, String type, int specialType, int processId) {
-        this.id = id;
+    public Lot(int quantity, int length, int width, String productName, String type, int specialType, Process process) {
         this.quantity = quantity;
         this.length = length;
         this.width = width;
         this.productName = productName;
         this.type = type;
         this.specialType = specialType;
-        this.processId = processId;
+        this.process = process;
     }
 
     public int getId() {
@@ -89,11 +96,11 @@ public class Lot {
         this.specialType = specialType;
     }
 
-    public int getProcessId() {
-        return processId;
+    public Process getProcess() {
+        return process;
     }
 
-    public void setProcessId(int processId) {
-        this.processId = processId;
+    public void setProcess(Process process) {
+        this.process = process;
     }
 }
