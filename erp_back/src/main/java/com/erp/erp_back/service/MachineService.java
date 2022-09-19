@@ -12,6 +12,7 @@ public class MachineService {
     protected int machineId;
     protected LocalDateTime productionTime;
     protected int processOrder;
+    protected String machineType;
 
     static MachineRepository machineRepository;
 
@@ -32,6 +33,14 @@ public class MachineService {
 
     public void setProcessOrder(int processOrder) {
         this.processOrder = processOrder;
+    }
+
+    public String getMachineType() {
+        return machineType;
+    }
+
+    public void setMachineType(String machineType) {
+        this.machineType = machineType;
     }
 
     public static MachineRepository getMachineRepository() {

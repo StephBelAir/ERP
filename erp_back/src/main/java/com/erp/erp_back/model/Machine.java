@@ -22,6 +22,8 @@ public class Machine implements Serializable {
 
     // Format à confirmer
     protected int processOrder;
+    protected String machineType;
+
 
     public Machine() {
     }
@@ -30,9 +32,10 @@ public class Machine implements Serializable {
      * @param productionTime
      * @param processOrder
      */
-    public Machine(LocalDateTime productionTime, int processOrder) {
+    public Machine(LocalDateTime productionTime, int processOrder, String machineType) {
         this.productionTime = productionTime;
         this.processOrder = processOrder;
+        this.machineType = machineType;
     }
 
     public int getMachineId() {
@@ -57,5 +60,13 @@ public class Machine implements Serializable {
 
     public void setProcessOrder(int processOrder) {
         this.processOrder = processOrder;
+    }
+
+    public String getMachineType() {
+        return machineType;
+    }
+
+    public void setMachineType(String machineType) {
+        this.machineType = machineType;
     }
 }
