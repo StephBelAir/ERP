@@ -6,6 +6,7 @@ import com.erp.erp_back.service.MachineService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,7 +61,18 @@ public class MachineController {
 
     /*--====================  Delete   ====================--*/
 
-
+    @ApiOperation(value = "Supprime UNE machine")
+    @DeleteMapping (value = "/machines/delete/{id}")
+    public List<Machine> deleteOneMachine(@PathVariable int id) throws Exception {
+        try {
+            machineRepository.deleteById(id);
+            List<Machine> machines = machineRepository.findAll();
+            return machines;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
 
 
 }
