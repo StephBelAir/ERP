@@ -59,6 +59,7 @@ public class MachineController {
         return null;
     }
 
+
     /*--====================  Delete   ====================--*/
 
     @ApiOperation(value = "Supprime UNE machine")
@@ -73,6 +74,7 @@ public class MachineController {
         }
         return null;
     }
+
 
     /*--====================  Update   ====================--*/
 
