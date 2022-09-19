@@ -1,5 +1,6 @@
 package com.erp.erp_back.service;
 
+import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.repository.MachineRepository;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +50,10 @@ public class MachineService {
 
     public static void setMachineRepository(MachineRepository machineRepository) {
         MachineService.machineRepository = machineRepository;
+    }
+
+    public static Machine addMachine(MachineService machineService) {
+        Machine machine = new Machine( machineService.getProductionTime(), machineService.getProcessOrder(), machineService.getMachineType());
+        return machine;
     }
 }

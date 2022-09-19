@@ -11,4 +11,6 @@ public interface MachineRepository extends JpaRepository<Machine, Integer> {
     List<Machine> findAll();
 
     Machine findById(int id);
+
+    Machine save(Machine machine);
 }

@@ -15,6 +15,9 @@ public class ProcessController {
     @Autowired
     private ProcessRepository processRepository;
 
+
+    /*--====================  Get   ====================--*/
+
     @ApiOperation(value = "Récupère TOUT les process existants")
     @GetMapping(value = "/processes")
     public Iterable<Process> getAllProcess() throws Exception {

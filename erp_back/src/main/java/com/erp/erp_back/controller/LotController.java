@@ -15,6 +15,9 @@ public class LotController {
     @Autowired
     private LotRepository lotRepository;
 
+
+    /*--====================  Get   ====================--*/
+
     @ApiOperation(value = "Récupère TOUT les lots existants")
     @GetMapping(value = "/lots")
     public Iterable<Lot> getAllLots() throws Exception {
