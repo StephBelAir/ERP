@@ -25,13 +25,13 @@ public class Process implements Serializable {
     protected LocalDateTime endDate;
     protected LocalDateTime actualEndDate;
 
-    @OneToMany(targetEntity = Machine.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    protected List<Machine> machine = new ArrayList<>();
+    @ManyToOne(targetEntity = Machine.class, fetch = FetchType.LAZY)
+    protected Machine machine;
 
     public Process() {
     }
 
-    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate, List<Machine> machine) {
+    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate, Machine machine) {
         this.processName = processName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -86,11 +86,11 @@ public class Process implements Serializable {
         this.actualEndDate = actualEndDate;
     }
 
-    public List<Machine> getMachine() {
+    public Machine getMachine() {
         return machine;
     }
 
-    public void setMachine(List<Machine> machine) {
+    public void setMachine(Machine machine) {
         this.machine = machine;
     }
 }

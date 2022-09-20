@@ -2,6 +2,7 @@ package com.erp.erp_back.controller;
 
 import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
+import com.erp.erp_back.repository.MachineRepository;
 import com.erp.erp_back.repository.ProcessRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +18,9 @@ public class ProcessController {
 
     @Autowired
     private ProcessRepository processRepository;
+
+    @Autowired
+    private MachineRepository machineRepository;
 
 
     /*--====================  Get   ====================--*/
@@ -53,6 +57,28 @@ public class ProcessController {
             return  processes;
         }
         catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
+
+    @ApiOperation(value = "Ajoute UN process")
+    @PostMapping(value = "/processes/add/{processId}/machine/{machineId}")
+    @ResponseBody
+    public Process addMachineToProcess(@PathVariable int processId, @PathVariable int machineId)
+            throws Exception {
+
+        try {
+            Process process = processRepository.findById(processId);
+            Machine machine = machineRepository.findById(machineId);
+            if (process.getMachine() == null) {
+                process.setMachine(machine);
+                processRepository.save(process);
+                return process;
+            }
+
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         return null;
