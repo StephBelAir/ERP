@@ -11,4 +11,6 @@ public interface ProcessRepository extends JpaRepository<Process, Integer> {
     List<Process> findAll();
 
     Process findById(int id);
+
+    Process save(Process process);
 }

@@ -1,5 +1,6 @@
 package com.erp.erp_back.service;
 
+import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.ProcessRepository;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +58,10 @@ public class ProcessService {
 
     public static void setProcessRepository(ProcessRepository processRepository) {
         ProcessService.processRepository = processRepository;
+    }
+
+    public static Process addProcess( ProcessService processService){
+        Process process = new Process(processService.getProcessName(), processService.getStartDate(), processService.getEndDate(), processService.getActualEndDate());
+        return process;
     }
 }

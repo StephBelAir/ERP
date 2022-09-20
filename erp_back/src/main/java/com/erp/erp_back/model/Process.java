@@ -39,6 +39,13 @@ public class Process implements Serializable {
         this.machine = machine;
     }
 
+    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate) {
+        this.processName = processName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.actualEndDate = actualEndDate;
+    }
+
     public int getProcessId() {
         return processId;
     }
