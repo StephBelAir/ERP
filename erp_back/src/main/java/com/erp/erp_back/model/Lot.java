@@ -40,6 +40,16 @@ public class Lot implements Serializable {
         this.process = process;
     }
 
+
+    public Lot(int quantity, int length, int width, String productName, String type, int specialType) {
+        this.quantity = quantity;
+        this.length = length;
+        this.width = width;
+        this.productName = productName;
+        this.type = type;
+        this.specialType = specialType;
+    }
+
     public int getId() {
         return id;
     }

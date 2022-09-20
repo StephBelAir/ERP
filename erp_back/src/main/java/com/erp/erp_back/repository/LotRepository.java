@@ -11,4 +11,6 @@ public interface LotRepository extends JpaRepository<Lot, Integer> {
     List<Lot> findAll();
 
     Lot findById(int id);
+
+    Lot save(Lot lot);
 }

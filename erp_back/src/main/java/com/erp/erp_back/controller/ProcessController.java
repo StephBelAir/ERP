@@ -50,38 +50,16 @@ public class ProcessController {
     @ApiOperation(value = "Ajoute UN process")
     @PostMapping(value = "/processes/add")
     @ResponseBody
-    public List<Process> creatProcess(@RequestBody Process processService) throws Exception{
-        try{
+    public List<Process> createProcess(@RequestBody Process processService) throws Exception {
+        try {
             processRepository.save(processService);
             List<Process> processes = processRepository.findAll();
-            return  processes;
-        }
-        catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return null;
-    }
-
-
-    @ApiOperation(value = "Ajoute UN process")
-    @PostMapping(value = "/processes/add/{processId}/machine/{machineId}")
-    @ResponseBody
-    public Process addMachineToProcess(@PathVariable int processId, @PathVariable int machineId)
-            throws Exception {
-
-        try {
-            Process process = processRepository.findById(processId);
-            Machine machine = machineRepository.findById(machineId);
-            if (process.getMachine() == null) {
-                process.setMachine(machine);
-                processRepository.save(process);
-                return process;
-            }
-
+            return processes;
         } catch (Exception ex) {
             System.out.println(ex);
         }
         return null;
     }
+
 
 }

@@ -2,7 +2,6 @@ package com.erp.erp_back.service;
 
 import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.repository.LotRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 // = DTO
@@ -15,8 +14,6 @@ public class LotService {
     protected String productName;
     protected String type;
     protected int specialType;
-    protected int processId;
-
 
     static LotRepository lotRepository;
 
@@ -71,13 +68,6 @@ public class LotService {
         this.specialType = specialType;
     }
 
-    public int getProcessId() {
-        return processId;
-    }
-
-    public void setProcessId(int processId) {
-        this.processId = processId;
-    }
 
     public static LotRepository getLotRepository() {
         return lotRepository;
@@ -86,5 +76,13 @@ public class LotService {
     public static void setLotRepository(LotRepository lotRepository) {
         LotService.lotRepository = lotRepository;
     }
+
+    public static Lot addLot( LotService lotService){
+        Lot lot = new Lot(lotService.getQuantity(), lotService.getLength(), lotService.getWidth(), lotService.getProductName(), lotService.getType(), lotService.getSpecialType() );
+        return lot;
+    }
+
+
+
 
 }
