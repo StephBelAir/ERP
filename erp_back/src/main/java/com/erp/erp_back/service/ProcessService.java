@@ -67,6 +67,11 @@ public class ProcessService {
     public List<Machine> getMachines() {
         return machines;
     }
+
+    public void setMachines(List<Machine> machines) {
+        this.machines = machines;
+    }
+
     public static ProcessRepository getProcessRepository() {
         return processRepository;
     }

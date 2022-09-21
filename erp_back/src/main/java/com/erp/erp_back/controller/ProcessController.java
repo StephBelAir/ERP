@@ -76,4 +76,16 @@ public class ProcessController {
         return processRepository.save(process);
     }
 
+    /*Todo : ajouter try catch*/
+    @PutMapping("/{processId}/addMachineList")
+    @ResponseBody
+    public void addMachineListToProcess(@RequestBody List<Machine> machineList, @PathVariable int processId){
+        Process process = processRepository.findById(processId);
+        if(process ==null)
+            return;
+        process.setMachine(machineList);
+        processRepository.save(process);
+    }
+
+
 }
