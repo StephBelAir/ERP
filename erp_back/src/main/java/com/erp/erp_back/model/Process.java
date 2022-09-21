@@ -86,7 +86,11 @@ public class Process implements Serializable {
         this.actualEndDate = actualEndDate;
     }
 
-    public List<Machine> getMachine() {
+    public void addMachine(Machine machine) {
+        this.machine.add(machine);
+    }
+
+   public List<Machine> getMachine() {
         return machine;
     }
 

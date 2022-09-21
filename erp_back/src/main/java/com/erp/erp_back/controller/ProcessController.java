@@ -4,9 +4,13 @@ import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.MachineRepository;
 import com.erp.erp_back.repository.ProcessRepository;
+import com.erp.erp_back.service.MachineService;
+import com.erp.erp_back.service.ProcessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -61,5 +65,15 @@ public class ProcessController {
         return null;
     }
 
+
+    @ApiOperation(value = "Ajoute UNE machine dans UN process")
+    @PutMapping("/{processId}/machines/{machineId}")
+    @ResponseBody
+    public Process addMachineToProcess( @PathVariable int processId, @PathVariable int machineId) {
+        Process process = processRepository.findById(processId);
+        Machine machine = machineRepository.findById(machineId);
+        process.addMachine(machine);
+        return processRepository.save(process);
+    }
 
 }

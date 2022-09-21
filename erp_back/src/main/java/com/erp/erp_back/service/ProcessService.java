@@ -1,23 +1,35 @@
 package com.erp.erp_back.service;
 
+import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.ProcessRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 // = DTO
 @Service
 public class ProcessService {
 
+    protected  int processId;
     protected String processName;
     protected LocalDateTime startDate;
     protected LocalDateTime endDate;
     protected LocalDateTime actualEndDate;
+    protected List<Machine> machines;
 
     static ProcessRepository processRepository;
 
     public ProcessService() {
+    }
+
+    public int getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(int processId) {
+        this.processId = processId;
     }
 
     public String getProcessName() {
@@ -52,6 +64,9 @@ public class ProcessService {
         this.actualEndDate = actualEndDate;
     }
 
+    public List<Machine> getMachines() {
+        return machines;
+    }
     public static ProcessRepository getProcessRepository() {
         return processRepository;
     }
