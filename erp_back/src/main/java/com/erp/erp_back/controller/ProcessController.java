@@ -65,7 +65,7 @@ public class ProcessController {
         return null;
     }
 
-
+    /*Todo : ajouter try catch*/
     @ApiOperation(value = "Ajoute UNE machine dans UN process")
     @PutMapping("/{processId}/machines/{machineId}")
     @ResponseBody
