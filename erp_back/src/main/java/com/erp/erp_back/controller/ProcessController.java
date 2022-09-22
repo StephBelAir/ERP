@@ -4,13 +4,10 @@ import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.MachineRepository;
 import com.erp.erp_back.repository.ProcessRepository;
-import com.erp.erp_back.service.MachineService;
-import com.erp.erp_back.service.ProcessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +26,10 @@ public class ProcessController {
 
     /*--====================  Get   ====================--*/
 
+    /**
+     * @return processList
+     * @throws Exception
+     */
     @ApiOperation(value = "Récupère TOUT les process existants")
     @GetMapping(value = "/processes")
     public Iterable<Process> getAllProcess() throws Exception {
@@ -42,6 +43,10 @@ public class ProcessController {
         return null;
     }
 
+    /**
+     * @param id
+     * @return processRepository.findById(id)
+     */
     @ApiOperation(value = "Récupère UN process grâce à son ID")
     @GetMapping({"/processes/{id}"})
     @ResponseBody
@@ -51,6 +56,12 @@ public class ProcessController {
 
 
     /*--====================  Post   ====================--*/
+
+    /**
+     * @param processService
+     * @return processes
+     * @throws Exception
+     */
     @ApiOperation(value = "Ajoute UN process")
     @PostMapping(value = "/processes/add")
     @ResponseBody
@@ -65,11 +76,18 @@ public class ProcessController {
         return null;
     }
 
-    /*Todo : ajouter try catch*/
+    /*Todo : ajouter try catch
+    *  Ajouter HttpStatus dans le return ?*/
+
+    /**
+     * @param processId
+     * @param machineId
+     * @return processRepository.save(process)
+     */
     @ApiOperation(value = "Ajoute UNE machine dans UN process")
     @PutMapping("/{processId}/machines/{machineId}")
     @ResponseBody
-    public Process addMachineToProcess( @PathVariable int processId, @PathVariable int machineId) {
+    public Process addMachineToProcess(@PathVariable int processId, @PathVariable int machineId) {
         Process process = processRepository.findById(processId);
         Machine machine = machineRepository.findById(machineId);
         process.addMachine(machine);
@@ -77,15 +95,20 @@ public class ProcessController {
     }
 
     /*Todo : ajouter try catch*/
+
+    /**
+     * @param machineList
+     * @param processId
+     */
+    @ApiOperation(value = "Ajoute DES machines dans UN process, efface les machines existantes")
     @PutMapping("/{processId}/addMachineList")
     @ResponseBody
-    public void addMachineListToProcess(@RequestBody List<Machine> machineList, @PathVariable int processId){
+    public void addMachineListToProcess(@RequestBody List<Machine> machineList, @PathVariable int processId) {
         Process process = processRepository.findById(processId);
-        if(process ==null)
+        if (process == null)
             return;
         process.setMachine(machineList);
         processRepository.save(process);
     }
-
 
 }

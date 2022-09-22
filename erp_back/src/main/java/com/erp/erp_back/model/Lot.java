@@ -30,6 +30,16 @@ public class Lot implements Serializable {
     public Lot() {
     }
 
+    /**
+     *
+     * @param quantity
+     * @param length
+     * @param width
+     * @param productName
+     * @param type
+     * @param specialType
+     * @param process
+     */
     public Lot(int quantity, int length, int width, String productName, String type, int specialType, Process process) {
         this.quantity = quantity;
         this.length = length;
@@ -40,7 +50,15 @@ public class Lot implements Serializable {
         this.process = process;
     }
 
-
+    /**
+     *
+     * @param quantity
+     * @param length
+     * @param width
+     * @param productName
+     * @param type
+     * @param specialType
+     */
     public Lot(int quantity, int length, int width, String productName, String type, int specialType) {
         this.quantity = quantity;
         this.length = length;
@@ -106,10 +124,18 @@ public class Lot implements Serializable {
         this.specialType = specialType;
     }
 
+    /**
+     *
+     * @return process
+     */
     public Process getProcess() {
         return process;
     }
 
+    /**
+     *
+     * @param process
+     */
     public void setProcess(Process process) {
         this.process = process;
     }

@@ -68,21 +68,28 @@ public class LotService {
         this.specialType = specialType;
     }
 
-
+    /**
+     * @return lotRepository
+     */
     public static LotRepository getLotRepository() {
         return lotRepository;
     }
 
+    /**
+     * @param lotRepository
+     */
     public static void setLotRepository(LotRepository lotRepository) {
         LotService.lotRepository = lotRepository;
     }
 
-    public static Lot addLot( LotService lotService){
-        Lot lot = new Lot(lotService.getQuantity(), lotService.getLength(), lotService.getWidth(), lotService.getProductName(), lotService.getType(), lotService.getSpecialType() );
+    /**
+     * @param lotService
+     * @return lot
+     */
+    public static Lot addLot(LotService lotService) {
+        Lot lot = new Lot(lotService.getQuantity(), lotService.getLength(), lotService.getWidth(), lotService.getProductName(), lotService.getType(), lotService.getSpecialType());
         return lot;
     }
-
-
 
 
 }

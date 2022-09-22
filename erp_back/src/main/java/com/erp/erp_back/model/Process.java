@@ -31,6 +31,13 @@ public class Process implements Serializable {
     public Process() {
     }
 
+    /**
+     * @param processName
+     * @param startDate
+     * @param endDate
+     * @param actualEndDate
+     * @param machine
+     */
     public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate, List<Machine> machine) {
         this.processName = processName;
         this.startDate = startDate;
@@ -39,6 +46,12 @@ public class Process implements Serializable {
         this.machine = machine;
     }
 
+    /**
+     * @param processName
+     * @param startDate
+     * @param endDate
+     * @param actualEndDate
+     */
     public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate) {
         this.processName = processName;
         this.startDate = startDate;
@@ -86,14 +99,23 @@ public class Process implements Serializable {
         this.actualEndDate = actualEndDate;
     }
 
+    /**
+     * @param machine
+     */
     public void addMachine(Machine machine) {
         this.machine.add(machine);
     }
 
-   public List<Machine> getMachine() {
+    /**
+     * @return machine
+     */
+    public List<Machine> getMachine() {
         return machine;
     }
 
+    /**
+     * @param machine
+     */
     public void setMachine(List<Machine> machine) {
         this.machine = machine;
     }

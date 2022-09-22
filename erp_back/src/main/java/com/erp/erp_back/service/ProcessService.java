@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ProcessService {
 
-    protected  int processId;
+    protected int processId;
     protected String processName;
     protected LocalDateTime startDate;
     protected LocalDateTime endDate;
@@ -64,24 +64,41 @@ public class ProcessService {
         this.actualEndDate = actualEndDate;
     }
 
+    /**
+     * @return machines
+     */
     public List<Machine> getMachines() {
         return machines;
     }
 
+    /**
+     * @param machines
+     */
     public void setMachines(List<Machine> machines) {
         this.machines = machines;
     }
 
+    /**
+     * @return processRepository
+     */
     public static ProcessRepository getProcessRepository() {
         return processRepository;
     }
 
+    /**
+     * @param processRepository
+     */
     public static void setProcessRepository(ProcessRepository processRepository) {
         ProcessService.processRepository = processRepository;
     }
 
-    public static Process addProcess( ProcessService processService){
+    /**
+     * @param processService
+     * @return process
+     */
+    public static Process addProcess(ProcessService processService) {
         Process process = new Process(processService.getProcessName(), processService.getStartDate(), processService.getEndDate(), processService.getActualEndDate());
         return process;
     }
+
 }

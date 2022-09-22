@@ -25,6 +25,10 @@ public class LotController {
 
     /*--====================  Get   ====================--*/
 
+    /**
+     * @return lotsList
+     * @throws Exception
+     */
     @ApiOperation(value = "Récupère TOUT les lots existants")
     @GetMapping(value = "/lots")
     public Iterable<Lot> getAllLots() throws Exception {
@@ -37,6 +41,10 @@ public class LotController {
         return null;
     }
 
+    /**
+     * @param id
+     * @return lotRepository.findById(id)
+     */
     @ApiOperation(value = "Récupère UN lot grâce à son ID")
     @GetMapping({"/lots/{id}"})
     @ResponseBody
@@ -46,6 +54,12 @@ public class LotController {
 
 
     /*--====================  Post   ====================--*/
+
+    /**
+     * @param lotService
+     * @return lots
+     * @throws Exception
+     */
     @ApiOperation(value = "Ajoute UN lot")
     @PostMapping(value = "/lots/add")
     @ResponseBody
@@ -61,6 +75,12 @@ public class LotController {
     }
 
 
+    /**
+     * @param id
+     * @param processId
+     * @return lot
+     * @throws Exception
+     */
     @ApiOperation(value = "Ajoute UN process dans UN lot")
     @PostMapping(value = "/lots/add/{id}/process/{processId}")
     @ResponseBody

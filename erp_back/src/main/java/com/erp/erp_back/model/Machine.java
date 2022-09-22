@@ -31,12 +31,20 @@ public class Machine implements Serializable {
     /**
      * @param productionTime
      * @param processOrder
+     * @param machineType
      */
     public Machine(LocalDateTime productionTime, int processOrder, String machineType) {
         this.productionTime = productionTime;
         this.processOrder = processOrder;
         this.machineType = machineType;
     }
+
+    /**
+     * @param machineId
+     * @param productionTime
+     * @param processOrder
+     * @param machineType
+     */
 
     public Machine(int machineId, LocalDateTime productionTime, int processOrder, String machineType) {
         this.machineId = machineId;

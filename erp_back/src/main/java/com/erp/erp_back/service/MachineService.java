@@ -52,19 +52,33 @@ public class MachineService {
         this.machineType = machineType;
     }
 
+    /**
+     * @return machineRepository
+     */
     public static MachineRepository getMachineRepository() {
         return machineRepository;
     }
 
+    /**
+     * @param machineRepository
+     */
     public static void setMachineRepository(MachineRepository machineRepository) {
         MachineService.machineRepository = machineRepository;
     }
 
+    /**
+     * @param machineService
+     * @return machine
+     */
     public static Machine addMachine(MachineService machineService) {
-        Machine machine = new Machine( machineService.getProductionTime(), machineService.getProcessOrder(), machineService.getMachineType());
+        Machine machine = new Machine(machineService.getProductionTime(), machineService.getProcessOrder(), machineService.getMachineType());
         return machine;
     }
 
+    /**
+     * @param machineService
+     * @return machine
+     */
     public static Machine editMachine(MachineService machineService) {
         Machine machine = new Machine(machineService.getMachineId(), machineService.getProductionTime(), machineService.getProcessOrder(), machineService.getMachineType());
         return machine;
