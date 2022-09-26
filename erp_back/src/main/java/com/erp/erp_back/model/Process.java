@@ -29,7 +29,7 @@ public class Process implements Serializable {
     @Nullable
     protected LocalDateTime actualEndDate;
 
-    @OneToMany(targetEntity = Machine.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Machine.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     protected List<Machine> machine = new ArrayList<>();
 
     public Process() {
