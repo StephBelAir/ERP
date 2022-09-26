@@ -2,6 +2,7 @@ package com.erp.erp_back.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -21,8 +22,11 @@ public class Process implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int processId;
     protected String processName;
+    @Nullable
     protected LocalDateTime startDate;
+    @Nullable
     protected LocalDateTime endDate;
+    @Nullable
     protected LocalDateTime actualEndDate;
 
     @OneToMany(targetEntity = Machine.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
