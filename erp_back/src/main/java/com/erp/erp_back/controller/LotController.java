@@ -103,4 +103,25 @@ public class LotController {
         }
         return null;
     }
+
+    /*--====================  Delete   ====================--*/
+
+    /**
+     *
+     * @param id
+     * @return lots
+     * @throws Exception
+     */
+    @ApiOperation(value = "Supprime UN lot")
+    @DeleteMapping(value = "/lots/delete/{id}")
+    public List<Lot> deleteOneLot(@PathVariable int id) throws Exception {
+        try {
+            lotRepository.deleteById(id);
+            List<Lot> lots = lotRepository.findAll();
+            return lots;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
 }

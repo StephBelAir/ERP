@@ -34,6 +34,9 @@ public class Process implements Serializable {
     @Nullable
     protected LocalDateTime actualEndDate;
 
+    /**
+     * ManyToOne UNE machine n'est pas supprimé quand on supprime UN process
+     */
     @ManyToMany(targetEntity = Machine.class, fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     protected List<Machine> machine = new ArrayList<>();
 

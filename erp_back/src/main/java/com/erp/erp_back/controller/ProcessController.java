@@ -118,6 +118,12 @@ public class ProcessController {
 
     /*--====================  Delete   ====================--*/
 
+    /**
+     *
+     * @param processId
+     * @return processes
+     * @throws Exception
+     */
     @ApiOperation(value = "Supprime UN process")
     @DeleteMapping(value = "/processes/delete/{processId}")
     public List<Process> deleteOneProcess(@PathVariable int processId) throws Exception {

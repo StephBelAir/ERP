@@ -28,7 +28,10 @@ public class Lot implements Serializable {
     protected String type;
     protected int specialType;
 
-    @ManyToOne(targetEntity = Process.class, fetch = FetchType.LAZY)
+    /**
+     * ManyToOne UN process n'est pas supprimé quand on supprime UN lot
+     */
+    @ManyToOne(targetEntity = Process.class, fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     protected Process process;
 
 
