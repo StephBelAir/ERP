@@ -9,6 +9,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 // = DTO
+
+/**
+ * Objets qui transportent des données entre les couches, où toutes les données d'un Process
+ * <br>
+ * qui seront utilisées sont rassemblées avant d'aller dans un controlleur.
+ */
 @Service
 public class ProcessService {
 

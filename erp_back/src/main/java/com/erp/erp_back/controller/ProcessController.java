@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Ce contrôleur est une classe, dont l’objectif est de réagir à une interaction avec l’utilisateur vers un Process.
+ * <p>
+ * Il doit permettre à l'utilisateur de poster les requêtes HTTP des opérations de base du CRUD au serveur.
+ */
 @Api("API pour les opérations CRUD sur les Process")
 @RestController
 @CrossOrigin

@@ -8,6 +8,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * L'instance de la classe Machine qui sera persistante, on pourra sauvegarder dans / charger depuis la base de données relationnelle ERP.
+ * <p>
+ * - Une Machine est déstiné à représenter une étape d'un process.
+ * <br>
+ * - Une machine est défini par son rang dans le process et son temp de cycle.
+ */
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Transactional

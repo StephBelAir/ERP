@@ -7,6 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * L'instance de la classe Lot qui sera persistante, on pourra sauvegarder dans / charger depuis la base de données relationnelle ERP.
+ * <br>
+ * Un Lot est déstiné à contenir UN process
+ */
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @JsonSerialize
 @Entity

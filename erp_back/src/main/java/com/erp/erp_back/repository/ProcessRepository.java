@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Cette interface permet d’accéder aux Process pour pouvoir lire ou modifier dans une base de données. *
+ */
 @Repository
 public interface ProcessRepository extends JpaRepository<Process, Integer> {
     List<Process> findAll();

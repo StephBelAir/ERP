@@ -11,6 +11,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * L'instance de la classe Process qui sera persistante, on pourra sauvegarder dans / charger depuis la base de données relationnelle ERP.
+ * <p>
+ * Un Process est déstiné à contenir un ensemble de machine
+ */
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Transactional

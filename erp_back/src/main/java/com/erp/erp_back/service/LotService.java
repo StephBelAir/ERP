@@ -5,6 +5,11 @@ import com.erp.erp_back.repository.LotRepository;
 import org.springframework.stereotype.Service;
 
 // = DTO
+/**
+ * Objets qui transportent des données entre les couches, où toutes les données d'un Lot
+ * <br>
+ * qui seront utilisées sont rassemblées avant d'aller dans un controlleur.
+ */
 @Service
 public class LotService {
     protected int id;

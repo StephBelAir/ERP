@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 // = DTO
+/**
+ * Objets qui transportent des données entre les couches, où toutes les données d'une Machine
+ * <br>
+ * qui seront utilisées sont rassemblées avant d'aller dans un controlleur.
+ */
 @Service
 public class MachineService {
 
