@@ -27,12 +27,6 @@ public class Process implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int processId;
     protected String processName;
-    @Nullable
-    protected LocalDateTime startDate;
-    @Nullable
-    protected LocalDateTime endDate;
-    @Nullable
-    protected LocalDateTime actualEndDate;
 
     /**
      * ManyToOne UNE machine n'est pas supprimé quand on supprime UN process
@@ -45,30 +39,18 @@ public class Process implements Serializable {
 
     /**
      * @param processName
-     * @param startDate
-     * @param endDate
-     * @param actualEndDate
      * @param machine
      */
-    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate, List<Machine> machine) {
+    public Process(String processName, List<Machine> machine) {
         this.processName = processName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.actualEndDate = actualEndDate;
         this.machine = machine;
     }
 
     /**
      * @param processName
-     * @param startDate
-     * @param endDate
-     * @param actualEndDate
      */
-    public Process(String processName, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate) {
+    public Process(String processName) {
         this.processName = processName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.actualEndDate = actualEndDate;
     }
 
     public int getProcessId() {
@@ -85,30 +67,6 @@ public class Process implements Serializable {
 
     public void setProcessName(String processName) {
         this.processName = processName;
-    }
-
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-
-    public LocalDateTime getActualEndDate() {
-        return actualEndDate;
-    }
-
-    public void setActualEndDate(LocalDateTime actualEndDate) {
-        this.actualEndDate = actualEndDate;
     }
 
     /**

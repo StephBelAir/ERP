@@ -2,10 +2,12 @@ package com.erp.erp_back.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * L'instance de la classe Lot qui sera persistante, on pourra sauvegarder dans / charger depuis la base de données relationnelle ERP.
@@ -27,6 +29,12 @@ public class Lot implements Serializable {
     protected String productName;
     protected String type;
     protected int specialType;
+    @Nullable
+    protected LocalDateTime startDate;
+    @Nullable
+    protected LocalDateTime endDate;
+    @Nullable
+    protected LocalDateTime actualEndDate;
 
     /**
      * ManyToOne UN process n'est pas supprimé quand on supprime UN lot
@@ -46,15 +54,21 @@ public class Lot implements Serializable {
      * @param productName
      * @param type
      * @param specialType
+     * @param startDate
+     * @param endDate
+     * @param actualEndDate
      * @param process
      */
-    public Lot(int quantity, int length, int width, String productName, String type, int specialType, Process process) {
+    public Lot(int quantity, int length, int width, String productName, String type, int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate, @Nullable LocalDateTime actualEndDate, Process process) {
         this.quantity = quantity;
         this.length = length;
         this.width = width;
         this.productName = productName;
         this.type = type;
         this.specialType = specialType;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.actualEndDate = actualEndDate;
         this.process = process;
     }
 
@@ -66,14 +80,20 @@ public class Lot implements Serializable {
      * @param productName
      * @param type
      * @param specialType
+     * @param startDate
+     * @param endDate
+     * @param actualEndDate
      */
-    public Lot(int quantity, int length, int width, String productName, String type, int specialType) {
+    public Lot(int quantity, int length, int width, String productName, String type, int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate, @Nullable LocalDateTime actualEndDate) {
         this.quantity = quantity;
         this.length = length;
         this.width = width;
         this.productName = productName;
         this.type = type;
         this.specialType = specialType;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.actualEndDate = actualEndDate;
     }
 
     public int getId() {
@@ -130,6 +150,33 @@ public class Lot implements Serializable {
 
     public void setSpecialType(int specialType) {
         this.specialType = specialType;
+    }
+
+    @Nullable
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(@Nullable LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    @Nullable
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(@Nullable LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    @Nullable
+    public LocalDateTime getActualEndDate() {
+        return actualEndDate;
+    }
+
+    public void setActualEndDate(@Nullable LocalDateTime actualEndDate) {
+        this.actualEndDate = actualEndDate;
     }
 
     /**

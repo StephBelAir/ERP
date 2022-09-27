@@ -2,7 +2,10 @@ package com.erp.erp_back.service;
 
 import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.repository.LotRepository;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 // = DTO
 /**
@@ -19,6 +22,9 @@ public class LotService {
     protected String productName;
     protected String type;
     protected int specialType;
+    protected LocalDateTime startDate;
+    protected LocalDateTime endDate;
+    protected LocalDateTime actualEndDate;
 
     static LotRepository lotRepository;
 
@@ -73,6 +79,30 @@ public class LotService {
         this.specialType = specialType;
     }
 
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public LocalDateTime getActualEndDate() {
+        return actualEndDate;
+    }
+
+    public void setActualEndDate(LocalDateTime actualEndDate) {
+        this.actualEndDate = actualEndDate;
+    }
+
     /**
      * @return lotRepository
      */
@@ -92,7 +122,7 @@ public class LotService {
      * @return lot
      */
     public static Lot addLot(LotService lotService) {
-        Lot lot = new Lot(lotService.getQuantity(), lotService.getLength(), lotService.getWidth(), lotService.getProductName(), lotService.getType(), lotService.getSpecialType());
+        Lot lot = new Lot(lotService.getQuantity(), lotService.getLength(), lotService.getWidth(), lotService.getProductName(), lotService.getType(), lotService.getSpecialType(), lotService.getStartDate(), lotService.getEndDate(), lotService.getActualEndDate());
         return lot;
     }
 
