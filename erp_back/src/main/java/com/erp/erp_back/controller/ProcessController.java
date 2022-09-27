@@ -116,4 +116,19 @@ public class ProcessController {
         processRepository.save(process);
     }
 
+    /*--====================  Delete   ====================--*/
+
+    @ApiOperation(value = "Supprime UN process")
+    @DeleteMapping(value = "/processes/delete/{processId}")
+    public List<Process> deleteOneProcess(@PathVariable int processId) throws Exception {
+        try {
+            processRepository.deleteById(processId);
+            List<Process> processes = processRepository.findAll();
+            return processes;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
 }
