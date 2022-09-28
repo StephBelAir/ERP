@@ -59,7 +59,7 @@ public class Lot implements Serializable {
      * @param actualEndDate
      * @param process
      */
-    public Lot(int quantity, int length, int width, String productName, String type, int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate, @Nullable LocalDateTime actualEndDate, Process process) {
+    public Lot(int quantity, int length, int width, String productName, String type, int specialType, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate, Process process) {
         this.quantity = quantity;
         this.length = length;
         this.width = width;
@@ -85,6 +85,31 @@ public class Lot implements Serializable {
      * @param actualEndDate
      */
     public Lot(int quantity, int length, int width, String productName, String type, int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate, @Nullable LocalDateTime actualEndDate) {
+        this.quantity = quantity;
+        this.length = length;
+        this.width = width;
+        this.productName = productName;
+        this.type = type;
+        this.specialType = specialType;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.actualEndDate = actualEndDate;
+    }
+
+
+    public Lot(int id, @Nullable String productName) {
+        this.id = id;
+        this.productName = productName;
+    }
+
+    public Lot(int id, @Nullable String productName, int width) {
+        this.id = id;
+        this.productName = productName;
+        this.width = width;
+    }
+
+    public Lot(int id, int quantity, int length, int width, @Nullable String productName, String type, int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate, @Nullable LocalDateTime actualEndDate) {
+        this.id = id;
         this.quantity = quantity;
         this.length = length;
         this.width = width;

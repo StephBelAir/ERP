@@ -31,6 +31,14 @@ public class LotService {
     public LotService() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -123,6 +131,11 @@ public class LotService {
      */
     public static Lot addLot(LotService lotService) {
         Lot lot = new Lot(lotService.getQuantity(), lotService.getLength(), lotService.getWidth(), lotService.getProductName(), lotService.getType(), lotService.getSpecialType(), lotService.getStartDate(), lotService.getEndDate(), lotService.getActualEndDate());
+        return lot;
+    }
+
+    public static Lot editLot(LotService lotService) {
+        Lot lot = new Lot(lotService.getId(), lotService.getQuantity(), lotService.getLength(), lotService.getWidth(), lotService.getProductName(), lotService.getType(), lotService.getSpecialType(), lotService.getStartDate(), lotService.getEndDate(), lotService.getActualEndDate());
         return lot;
     }
 

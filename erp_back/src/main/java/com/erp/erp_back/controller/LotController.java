@@ -1,14 +1,19 @@
 package com.erp.erp_back.controller;
 
 import com.erp.erp_back.model.Lot;
+import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.LotRepository;
 import com.erp.erp_back.repository.ProcessRepository;
+import com.erp.erp_back.service.LotService;
+import com.erp.erp_back.service.MachineService;
+import com.erp.erp_back.service.PlanningService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +60,45 @@ public class LotController {
     @ResponseBody
     public Lot getLotById(@PathVariable int id) {
         return this.lotRepository.findById(id);
+    }
+
+    /*--====================  Get pour le Planning  ====================--*/
+
+    /**
+     *  Get avec Restriction des données visibles pour le rôle du technicien "Planning"
+     * @return lotsList
+     * @throws Exception
+     */
+    /*
+    @ApiOperation(value = "Récupère TOUT les lots existants Pour le role Planning")
+    @GetMapping(value = "/lots/planning")
+    public Iterable<PlanningService> getAllLotsForPlanning() throws Exception {
+        try {
+            Iterable<PlanningService> lotsListForPlanning = lotRepository.findAllPlaning();
+            return lotsListForPlanning;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    } */
+
+    /*--====================  Get avec une Query ====================--*/
+
+    /**
+     * Get avec query SQL
+     * @return lotsListByProductName
+     * @throws Exception
+     */
+    @ApiOperation(value = "Récupère TOUT les lots SEULEMENT avec le productName")
+    @GetMapping({"/lots/query"})
+    public ArrayList<Lot> getFindAllByQuery() throws Exception {
+        try {
+            ArrayList<Lot> lotsListByProductName = lotRepository.findAllByQuery();
+             return lotsListByProductName;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
 
 
@@ -117,6 +161,24 @@ public class LotController {
     public List<Lot> deleteOneLot(@PathVariable int id) throws Exception {
         try {
             lotRepository.deleteById(id);
+            List<Lot> lots = lotRepository.findAll();
+            return lots;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
+
+    /*--====================  Update   ====================--*/
+
+    @ApiOperation(value = "Modifie UN Lot")
+    @PutMapping(value = "/lots")
+    @ResponseBody
+    public List<Lot> updateLot(@RequestBody LotService lotService) throws Exception {
+        try {
+            Lot lot = LotService.editLot(lotService);
+            lotRepository.save(lot);
             List<Lot> lots = lotRepository.findAll();
             return lots;
         } catch (Exception ex) {
