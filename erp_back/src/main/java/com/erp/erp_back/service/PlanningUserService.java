@@ -1,9 +1,6 @@
 package com.erp.erp_back.service;
 
-import com.erp.erp_back.model.Lot;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 // = DTO
 
@@ -15,16 +12,16 @@ import java.util.List;
  * qui seront utilisées sont rassemblées avant d'aller dans un controlleur.
  */
 @Service
-public class PlanningService {
+public class PlanningUserService {
     protected int id;
     protected String productName;
     protected int width;
 
 
-    public PlanningService() {
+    public PlanningUserService() {
     }
 
-    public PlanningService(int id, String productName, int width) {
+    public PlanningUserService(int id, String productName, int width) {
         this.id = id;
         this.productName = productName;
         this.width = width;

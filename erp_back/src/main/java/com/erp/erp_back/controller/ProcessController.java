@@ -1,11 +1,9 @@
 package com.erp.erp_back.controller;
 
-import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.MachineRepository;
 import com.erp.erp_back.repository.ProcessRepository;
-import com.erp.erp_back.service.LotService;
 import com.erp.erp_back.service.ProcessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

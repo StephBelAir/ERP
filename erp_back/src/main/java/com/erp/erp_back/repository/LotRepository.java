@@ -1,7 +1,6 @@
 package com.erp.erp_back.repository;
 
 import com.erp.erp_back.model.Lot;
-import com.erp.erp_back.service.PlanningService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
