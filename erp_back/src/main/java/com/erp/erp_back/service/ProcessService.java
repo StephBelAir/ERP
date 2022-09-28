@@ -78,4 +78,9 @@ public class ProcessService {
         return process;
     }
 
+    public static Process editProcess(ProcessService processService){
+        Process process = new Process(processService.getProcessId(), processService.getProcessName());
+        return process;
+    }
+
 }

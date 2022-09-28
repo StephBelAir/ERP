@@ -172,6 +172,13 @@ public class LotController {
 
     /*--====================  Update   ====================--*/
 
+    /**
+     *
+     * @param lotService
+     * @return lots
+     * @throws Exception
+     */
+
     @ApiOperation(value = "Modifie UN Lot")
     @PutMapping(value = "/lots")
     @ResponseBody

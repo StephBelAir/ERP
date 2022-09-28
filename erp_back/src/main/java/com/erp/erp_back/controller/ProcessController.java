@@ -1,9 +1,12 @@
 package com.erp.erp_back.controller;
 
+import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.MachineRepository;
 import com.erp.erp_back.repository.ProcessRepository;
+import com.erp.erp_back.service.LotService;
+import com.erp.erp_back.service.ProcessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -136,5 +139,31 @@ public class ProcessController {
         }
         return null;
     }
+
+    /*--====================  Update   ====================--*/
+
+    /**
+     *
+     * @param processService
+     * @return processes
+     * @throws Exception
+     */
+
+
+    @ApiOperation(value = "Modifie UN Process")
+    @PutMapping(value = "/processes")
+    @ResponseBody
+    public List<Process> updateProcesses(@RequestBody ProcessService processService) throws Exception {
+        try {
+            Process process = ProcessService.editProcess(processService);
+            processRepository.save(process);
+            List<Process> processes = processRepository.findAll();
+            return processes;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
 
 }
