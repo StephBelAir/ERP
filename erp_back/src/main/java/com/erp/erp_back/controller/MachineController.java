@@ -20,104 +20,104 @@ import java.util.List;
 @CrossOrigin
 public class MachineController {
 
-    @Autowired
-    private MachineRepository machineRepository;
+  @Autowired
+  private MachineRepository machineRepository;
 
 
-    /*--====================  Get   ====================--*/
+  /*--====================  Get   ====================--*/
 
-    /**
-     * @return machinesList
-     * @throws Exception
-     */
-    @ApiOperation(value = "Récupère TOUTES les machines existants")
-    @GetMapping(value = "/machines")
-    public Iterable<Machine> getAllMachines() throws Exception {
-        try {
-            Iterable<Machine> machinesList = machineRepository.findAll();
-            return machinesList;
+  /**
+   * @return machinesList
+   * @throws Exception
+   */
+  @ApiOperation(value = "Récupère TOUTES les machines existants")
+  @GetMapping(value = "/machines")
+  public Iterable<Machine> getAllMachines() throws Exception {
+    try {
+      Iterable<Machine> machinesList = machineRepository.findAll();
+      return machinesList;
 
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return null;
+    } catch (Exception ex) {
+      System.out.println(ex);
     }
+    return null;
+  }
 
-    /**
-     * @param id
-     * @return machineRepository.findById(id)
-     */
-    @ApiOperation(value = "Récupère UNE machine grâce à son ID")
-    @GetMapping({"/machines/{id}"})
-    @ResponseBody
-    public Machine getProcessById(@PathVariable int id) {
-        return this.machineRepository.findById(id);
+  /**
+   * @param id
+   * @return machineRepository.findById(id)
+   */
+  @ApiOperation(value = "Récupère UNE machine grâce à son ID")
+  @GetMapping({"/machines/{id}"})
+  @ResponseBody
+  public Machine getProcessById(@PathVariable int id) {
+    return this.machineRepository.findById(id);
+  }
+
+
+  /*--====================  Post   ====================--*/
+
+  /**
+   * @param machineService
+   * @return machines
+   * @throws Exception
+   */
+  @ApiOperation(value = "Ajoute UNE machine")
+  @PostMapping(value = "/machines/add")
+  @ResponseBody
+  public List<Machine> createUser(@RequestBody Machine machineService) throws Exception {
+    try {
+      machineRepository.save(machineService);
+      List<Machine> machines = machineRepository.findAll();
+      return machines;
+    } catch (Exception ex) {
+      System.out.println(ex);
     }
+    return null;
+  }
 
 
-    /*--====================  Post   ====================--*/
+  /*--====================  Delete   ====================--*/
 
-    /**
-     * @param machineService
-     * @return machines
-     * @throws Exception
-     */
-    @ApiOperation(value = "Ajoute UNE machine")
-    @PostMapping(value = "/machines/add")
-    @ResponseBody
-    public List<Machine> createUser(@RequestBody Machine machineService) throws Exception {
-        try {
-            machineRepository.save(machineService);
-            List<Machine> machines = machineRepository.findAll();
-            return machines;
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return null;
+  /**
+   * @param id
+   * @return machines
+   * @throws Exception
+   */
+  @ApiOperation(value = "Supprime UNE machine")
+  @DeleteMapping(value = "/machines/delete/{id}")
+  public List<Machine> deleteOneMachine(@PathVariable int id) throws Exception {
+    try {
+      machineRepository.deleteById(id);
+      List<Machine> machines = machineRepository.findAll();
+      return machines;
+    } catch (Exception ex) {
+      System.out.println(ex);
     }
+    return null;
+  }
 
 
-    /*--====================  Delete   ====================--*/
+  /*--====================  Update   ====================--*/
 
-    /**
-     * @param id
-     * @return machines
-     * @throws Exception
-     */
-    @ApiOperation(value = "Supprime UNE machine")
-    @DeleteMapping(value = "/machines/delete/{id}")
-    public List<Machine> deleteOneMachine(@PathVariable int id) throws Exception {
-        try {
-            machineRepository.deleteById(id);
-            List<Machine> machines = machineRepository.findAll();
-            return machines;
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return null;
+  /**
+   * @param machineService
+   * @return machines
+   * @throws Exception
+   */
+  @ApiOperation(value = "Modifie UNE machine")
+  @PutMapping(value = "/machines")
+  @ResponseBody
+  public List<Machine> updateMachine(@RequestBody MachineService machineService) throws Exception {
+    try {
+      Machine machine = MachineService.editMachine(machineService);
+      machineRepository.save(machine);
+      List<Machine> machines = machineRepository.findAll();
+      return machines;
+    } catch (Exception ex) {
+      System.out.println(ex);
     }
-
-
-    /*--====================  Update   ====================--*/
-
-    /**
-     * @param machineService
-     * @return machines
-     * @throws Exception
-     */
-    @ApiOperation(value = "Modifie UNE machine")
-    @PutMapping(value = "/machines")
-    @ResponseBody
-    public List<Machine> updateMachine(@RequestBody MachineService machineService) throws Exception {
-        try {
-            Machine machine = MachineService.editMachine(machineService);
-            machineRepository.save(machine);
-            List<Machine> machines = machineRepository.findAll();
-            return machines;
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return null;
-    }
+    return null;
+  }
 
 }

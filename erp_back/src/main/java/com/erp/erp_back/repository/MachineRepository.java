@@ -10,11 +10,11 @@ import java.util.List;
  */
 @Repository
 public interface MachineRepository extends JpaRepository<Machine, Integer> {
-    List<Machine> findAll();
+  List<Machine> findAll();
 
-    Machine findById(int id);
+  Machine findById(int id);
 
-    Machine save(Machine machine);
+  Machine save(Machine machine);
 
-    Machine deleteById(int id);
+  Machine deleteById(int id);
 }

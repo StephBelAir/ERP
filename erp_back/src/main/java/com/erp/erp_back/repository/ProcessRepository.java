@@ -11,9 +11,9 @@ import java.util.List;
  */
 @Repository
 public interface ProcessRepository extends JpaRepository<Process, Integer> {
-    List<Process> findAll();
+  List<Process> findAll();
 
-    Process findById(int id);
+  Process findById(int id);
 
-    Process save(Process process);
+  Process save(Process process);
 }

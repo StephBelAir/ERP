@@ -13,15 +13,15 @@ import java.util.List;
  */
 @Repository
 public interface LotRepository extends JpaRepository<Lot, Integer> {
-    List<Lot> findAll();
+  List<Lot> findAll();
 
-    Lot findById(int id);
+  Lot findById(int id);
 
-    @Query("SELECT new Lot (l.id, l.productName) from Lot l")
-    ArrayList<Lot> findAllByQuery();
+  @Query("SELECT new Lot (l.id, l.productName) from Lot l")
+  ArrayList<Lot> findAllByQuery();
 
-    // @Query("SELECT new Lot (p.id, p.productName, p.width) from Lot p")
-    // List<PlanningService> findAllPlaning();
+  // @Query("SELECT new Lot (p.id, p.productName, p.width) from Lot p")
+  // List<PlanningService> findAllPlaning();
 
-    Lot save(Lot lot);
+  Lot save(Lot lot);
 }

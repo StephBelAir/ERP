@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 /**
  * L'instance de la classe Machine qui sera persistante, on pourra sauvegarder dans / charger depuis la base de données relationnelle ERP.
  * <p>
- * - Une Machine est déstiné à représenter une étape d'un process.
+ * - Une Machine est destinée à représenter une étape d'un process.
  * <br>
- * - Une machine est défini par son rang dans le process et son temp de cycle.
+ * - Une machine est définie par son rang dans le process et son temp de cycle.
  */
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
@@ -22,73 +22,74 @@ import java.time.LocalDateTime;
 @Table(name = "machine")
 public class Machine implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int machineId;
-    protected LocalDateTime productionTime;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  protected int machineId;
+  protected LocalDateTime productionTime;
 
-    // Format à confirmer
-    protected int processOrder;
-    protected String machineType;
+  // Format à confirmer
+  protected int processOrder;
+  protected String machineType;
 
 
-    public Machine() {
-    }
+  public Machine() {
+  }
 
-    /**
-     * @param productionTime
-     * @param processOrder
-     * @param machineType
-     */
-    public Machine(LocalDateTime productionTime, int processOrder, String machineType) {
-        this.productionTime = productionTime;
-        this.processOrder = processOrder;
-        this.machineType = machineType;
-    }
+  /**
+   * @param productionTime
+   * @param processOrder
+   * @param machineType
+   */
+  public Machine(LocalDateTime productionTime, int processOrder, String machineType) {
+    this.productionTime = productionTime;
+    this.processOrder = processOrder;
+    this.machineType = machineType;
+  }
 
-    /**
-     * @param machineId
-     * @param productionTime
-     * @param processOrder
-     * @param machineType
-     */
+  /**
+   * @param machineId
+   * @param productionTime
+   * @param processOrder
+   * @param machineType
+   */
 
-    public Machine(int machineId, LocalDateTime productionTime, int processOrder, String machineType) {
-        this.machineId = machineId;
-        this.productionTime = productionTime;
-        this.processOrder = processOrder;
-        this.machineType = machineType;
-    }
+  public Machine(int machineId, LocalDateTime productionTime, int processOrder,
+                 String machineType) {
+    this.machineId = machineId;
+    this.productionTime = productionTime;
+    this.processOrder = processOrder;
+    this.machineType = machineType;
+  }
 
-    public int getMachineId() {
-        return machineId;
-    }
+  public int getMachineId() {
+    return machineId;
+  }
 
-    public void setMachineId(int machineId) {
-        this.machineId = machineId;
-    }
+  public void setMachineId(int machineId) {
+    this.machineId = machineId;
+  }
 
-    public LocalDateTime getProductionTime() {
-        return productionTime;
-    }
+  public LocalDateTime getProductionTime() {
+    return productionTime;
+  }
 
-    public void setProductionTime(LocalDateTime productionTime) {
-        this.productionTime = productionTime;
-    }
+  public void setProductionTime(LocalDateTime productionTime) {
+    this.productionTime = productionTime;
+  }
 
-    public int getProcessOrder() {
-        return processOrder;
-    }
+  public int getProcessOrder() {
+    return processOrder;
+  }
 
-    public void setProcessOrder(int processOrder) {
-        this.processOrder = processOrder;
-    }
+  public void setProcessOrder(int processOrder) {
+    this.processOrder = processOrder;
+  }
 
-    public String getMachineType() {
-        return machineType;
-    }
+  public String getMachineType() {
+    return machineType;
+  }
 
-    public void setMachineType(String machineType) {
-        this.machineType = machineType;
-    }
+  public void setMachineType(String machineType) {
+    this.machineType = machineType;
+  }
 }

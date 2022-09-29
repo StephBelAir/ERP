@@ -20,203 +20,205 @@ import java.time.LocalDateTime;
 @Transactional
 public class Lot implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
-    protected int quantity;
-    protected int length;
-    protected int width;
-    protected String productName;
-    protected String type;
-    protected int specialType;
-    @Nullable
-    protected LocalDateTime startDate;
-    @Nullable
-    protected LocalDateTime endDate;
-    @Nullable
-    protected LocalDateTime actualEndDate;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  protected int id;
+  protected int quantity;
+  protected int length;
+  protected int width;
+  protected String productName;
+  protected String type;
+  protected int specialType;
+  @Nullable
+  protected LocalDateTime startDate;
+  @Nullable
+  protected LocalDateTime endDate;
+  @Nullable
+  protected LocalDateTime actualEndDate;
 
-    /**
-     * ManyToOne UN process n'est pas supprimé quand on supprime UN lot
-     */
-    @ManyToOne(targetEntity = Process.class, fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-    protected Process process;
-
-
-    public Lot() {
-    }
-
-    /**
-     *
-     * @param quantity
-     * @param length
-     * @param width
-     * @param productName
-     * @param type
-     * @param specialType
-     * @param startDate
-     * @param endDate
-     * @param actualEndDate
-     * @param process
-     */
-    public Lot(int quantity, int length, int width, String productName, String type, int specialType, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate, Process process) {
-        this.quantity = quantity;
-        this.length = length;
-        this.width = width;
-        this.productName = productName;
-        this.type = type;
-        this.specialType = specialType;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.actualEndDate = actualEndDate;
-        this.process = process;
-    }
-
-    /**
-     *
-     * @param quantity
-     * @param length
-     * @param width
-     * @param productName
-     * @param type
-     * @param specialType
-     * @param startDate
-     * @param endDate
-     * @param actualEndDate
-     */
-    public Lot(int quantity, int length, int width, String productName, String type, int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate, @Nullable LocalDateTime actualEndDate) {
-        this.quantity = quantity;
-        this.length = length;
-        this.width = width;
-        this.productName = productName;
-        this.type = type;
-        this.specialType = specialType;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.actualEndDate = actualEndDate;
-    }
+  /**
+   * ManyToOne UN process n'est pas supprimé quand on supprime UN lot
+   */
+  @ManyToOne(targetEntity = Process.class, fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+  protected Process process;
 
 
-    public Lot(int id, @Nullable String productName) {
-        this.id = id;
-        this.productName = productName;
-    }
+  public Lot() {
+  }
 
-    public Lot(int id, @Nullable String productName, int width) {
-        this.id = id;
-        this.productName = productName;
-        this.width = width;
-    }
+  /**
+   * @param quantity
+   * @param length
+   * @param width
+   * @param productName
+   * @param type
+   * @param specialType
+   * @param startDate
+   * @param endDate
+   * @param actualEndDate
+   * @param process
+   */
+  public Lot(int quantity, int length, int width, String productName, String type, int specialType,
+             LocalDateTime startDate, LocalDateTime endDate, LocalDateTime actualEndDate,
+             Process process) {
+    this.quantity = quantity;
+    this.length = length;
+    this.width = width;
+    this.productName = productName;
+    this.type = type;
+    this.specialType = specialType;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.actualEndDate = actualEndDate;
+    this.process = process;
+  }
 
-    public Lot(int id, int quantity, int length, int width, @Nullable String productName, String type, int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate, @Nullable LocalDateTime actualEndDate) {
-        this.id = id;
-        this.quantity = quantity;
-        this.length = length;
-        this.width = width;
-        this.productName = productName;
-        this.type = type;
-        this.specialType = specialType;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.actualEndDate = actualEndDate;
-    }
+  /**
+   * @param quantity
+   * @param length
+   * @param width
+   * @param productName
+   * @param type
+   * @param specialType
+   * @param startDate
+   * @param endDate
+   * @param actualEndDate
+   */
+  public Lot(int quantity, int length, int width, String productName, String type, int specialType,
+             @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate,
+             @Nullable LocalDateTime actualEndDate) {
+    this.quantity = quantity;
+    this.length = length;
+    this.width = width;
+    this.productName = productName;
+    this.type = type;
+    this.specialType = specialType;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.actualEndDate = actualEndDate;
+  }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public Lot(int id, @Nullable String productName) {
+    this.id = id;
+    this.productName = productName;
+  }
 
-    public int getQuantity() {
-        return quantity;
-    }
+  public Lot(int id, @Nullable String productName, int width) {
+    this.id = id;
+    this.productName = productName;
+    this.width = width;
+  }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+  public Lot(int id, int quantity, int length, int width, @Nullable String productName, String type,
+             int specialType, @Nullable LocalDateTime startDate, @Nullable LocalDateTime endDate,
+             @Nullable LocalDateTime actualEndDate) {
+    this.id = id;
+    this.quantity = quantity;
+    this.length = length;
+    this.width = width;
+    this.productName = productName;
+    this.type = type;
+    this.specialType = specialType;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.actualEndDate = actualEndDate;
+  }
 
-    public int getLength() {
-        return length;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setLength(int length) {
-        this.length = length;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public int getWidth() {
-        return width;
-    }
+  public int getQuantity() {
+    return quantity;
+  }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
 
-    public String getProductName() {
-        return productName;
-    }
+  public int getLength() {
+    return length;
+  }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+  public void setLength(int length) {
+    this.length = length;
+  }
 
-    public String getType() {
-        return type;
-    }
+  public int getWidth() {
+    return width;
+  }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+  public void setWidth(int width) {
+    this.width = width;
+  }
 
-    public int getSpecialType() {
-        return specialType;
-    }
+  public String getProductName() {
+    return productName;
+  }
 
-    public void setSpecialType(int specialType) {
-        this.specialType = specialType;
-    }
+  public void setProductName(String productName) {
+    this.productName = productName;
+  }
 
-    @Nullable
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
+  public String getType() {
+    return type;
+  }
 
-    public void setStartDate(@Nullable LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
+  public void setType(String type) {
+    this.type = type;
+  }
 
-    @Nullable
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
+  public int getSpecialType() {
+    return specialType;
+  }
 
-    public void setEndDate(@Nullable LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
+  public void setSpecialType(int specialType) {
+    this.specialType = specialType;
+  }
 
-    @Nullable
-    public LocalDateTime getActualEndDate() {
-        return actualEndDate;
-    }
+  @Nullable
+  public LocalDateTime getStartDate() {
+    return startDate;
+  }
 
-    public void setActualEndDate(@Nullable LocalDateTime actualEndDate) {
-        this.actualEndDate = actualEndDate;
-    }
+  public void setStartDate(@Nullable LocalDateTime startDate) {
+    this.startDate = startDate;
+  }
 
-    /**
-     *
-     * @return process
-     */
-    public Process getProcess() {
-        return process;
-    }
+  @Nullable
+  public LocalDateTime getEndDate() {
+    return endDate;
+  }
 
-    /**
-     *
-     * @param process
-     */
-    public void setProcess(Process process) {
-        this.process = process;
-    }
+  public void setEndDate(@Nullable LocalDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+  @Nullable
+  public LocalDateTime getActualEndDate() {
+    return actualEndDate;
+  }
+
+  public void setActualEndDate(@Nullable LocalDateTime actualEndDate) {
+    this.actualEndDate = actualEndDate;
+  }
+
+  /**
+   * @return process
+   */
+  public Process getProcess() {
+    return process;
+  }
+
+  /**
+   * @param process
+   */
+  public void setProcess(Process process) {
+    this.process = process;
+  }
 }

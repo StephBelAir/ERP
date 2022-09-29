@@ -13,42 +13,42 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PlanningUserService {
-    protected int id;
-    protected String productName;
-    protected int width;
+  protected int id;
+  protected String productName;
+  protected int width;
 
 
-    public PlanningUserService() {
-    }
+  public PlanningUserService() {
+  }
 
-    public PlanningUserService(int id, String productName, int width) {
-        this.id = id;
-        this.productName = productName;
-        this.width = width;
-    }
+  public PlanningUserService(int id, String productName, int width) {
+    this.id = id;
+    this.productName = productName;
+    this.width = width;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getProductName() {
-        return productName;
-    }
+  public String getProductName() {
+    return productName;
+  }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+  public void setProductName(String productName) {
+    this.productName = productName;
+  }
 
-    public int getWidth() {
-        return width;
-    }
+  public int getWidth() {
+    return width;
+  }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
+  public void setWidth(int width) {
+    this.width = width;
+  }
 
 }
