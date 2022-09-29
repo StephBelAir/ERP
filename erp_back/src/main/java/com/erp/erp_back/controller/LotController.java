@@ -101,6 +101,7 @@ public class LotController {
   }
 
 
+
   /*--====================  Post   ====================--*/
 
   /**
@@ -108,7 +109,7 @@ public class LotController {
    * @return lots
    * @throws Exception
    */
-  @ApiOperation(value = "Ajoute UN lot")
+  @ApiOperation(value = "Créer UN lot")
   @PostMapping(value = "/lots/add")
   @ResponseBody
   public List<Lot> createLot(@RequestBody Lot lotService) throws Exception {
@@ -176,7 +177,7 @@ public class LotController {
    * @throws Exception
    */
 
-  @ApiOperation(value = "Modifie UN Lot")
+  @ApiOperation(value = "Mise en production d'UN lot")
   @PutMapping(value = "/lots")
   @ResponseBody
   public List<Lot> updateLot(@RequestBody LotService lotService) throws Exception {
