@@ -200,8 +200,10 @@ public class LotController {
 
   @ApiOperation(value = "Mise en production d'UN lot")
   @PatchMapping("/lot/patch")
-  public ResponseEntity<Lot> updateEmployeePartially(@RequestParam int id, @RequestParam("startDate")
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate) {
+  public ResponseEntity<Lot> updateEmployeePartially(
+      @RequestParam int id,
+      @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+      LocalDateTime startDate) {
     try {
       Lot lot = lotRepository.findById(id);
       lot.setStartDate(startDate);
