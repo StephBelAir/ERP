@@ -72,22 +72,24 @@ public class LotController {
   /*--====================  Get pour le Planning  ====================--*/
 
   /**
-   *  Get avec Restriction des données visibles pour le rôle du technicien "Planning"
+   * Get avec Restriction des données visibles pour le rôle du technicien "Planning"
+   *
    * @return lotsList
    * @throws Exception
    */
-    /*
-    @ApiOperation(value = "Récupère TOUT les lots existants Pour le role Planning")
-    @GetMapping(value = "/lots/planning")
-    public Iterable<PlanningUserService> getAllLotsForPlanning() throws Exception {
-        try {
-            Iterable<PlanningUserService> lotsListForPlanning = lotRepository.findAllPlaning();
-            return lotsListForPlanning;
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return null;
-    } */
+
+  /*
+  @ApiOperation(value = "Récupère TOUT les lots existants Pour le role Planning")
+  @GetMapping(value = "/lots/planning")
+  public Iterable<PlanningUserService> getAllLotsForPlanning() throws Exception {
+    try {
+      Iterable<PlanningUserService> lotsListForPlanning = lotRepository.findAll(lot);
+      return lotsListForPlanning;
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
+    return null;
+  } */
 
   /*--====================  Get avec une Query ====================--*/
 
@@ -201,9 +203,12 @@ public class LotController {
     return null;
   }
 
+  /*--====================  Patch Mise en Production pour Plusieurs Paramètres   ====================--*/
+
   /**
    * Mise en route ou Fin de lot <br>
    * Patch Lot sans effacer les autres paramètres
+   *
    * @param id
    * @param updateLot
    * @return updateLot
@@ -218,6 +223,48 @@ public class LotController {
 
     lotRepository.save(updateLot);
     return new ResponseEntity<>(updateLot, HttpStatus.OK);
+  }
+
+  /*--====================  Patch Mise en Production pour Chaque Paramètre de date   ====================--*/
+
+
+  @ApiOperation(value = "Mise en production d'UN lot avec SEULEMENT le param startDate")
+  @PatchMapping("/lot/patch/startDate")
+  public ResponseEntity<Lot> patchStartDatePartially(@RequestParam int id, @RequestParam("startDate")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate) {
+    try {
+      Lot lot = lotRepository.findById(id);
+      lot.setStartDate(startDate);
+      return new ResponseEntity<Lot>(lotRepository.save(lot), HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  @ApiOperation(value = "Mise en production d'UN lot avec SEULEMENT le param endDate")
+  @PatchMapping("/lot/patch/endDate")
+  public ResponseEntity<Lot> patchEndDatePartially(@RequestParam int id, @RequestParam("endDate")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
+    try {
+      Lot lot = lotRepository.findById(id);
+      lot.setEndDate(endDate);
+      return new ResponseEntity<Lot>(lotRepository.save(lot), HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  @ApiOperation(value = "Mise en production d'UN lot avec SEULEMENT le param actualEndDate")
+  @PatchMapping("/lot/patch/actualEndDate")
+  public ResponseEntity<Lot> patchActualEndDatePartially(@RequestParam int id, @RequestParam("actualEndDate")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime actualEndDate) {
+    try {
+      Lot lot = lotRepository.findById(id);
+      lot.setActualEndDate(actualEndDate);
+      return new ResponseEntity<Lot>(lotRepository.save(lot), HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
 
