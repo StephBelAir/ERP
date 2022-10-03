@@ -8,13 +8,16 @@ import com.erp.erp_back.service.LotService;
 import com.erp.erp_back.service.PlanningUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.lang.reflect.Field;
 import java.time.LocalDateTime;
+import java.util.Map;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -198,19 +201,25 @@ public class LotController {
     return null;
   }
 
+  /**
+   * Mise en route ou Fin de lot <br>
+   * Patch Lot sans effacer les autres paramètres
+   * @param id
+   * @param updateLot
+   * @return updateLot
+   */
+
   @ApiOperation(value = "Mise en production d'UN lot")
-  @PatchMapping("/lot/patch")
-  public ResponseEntity<Lot> updateEmployeePartially(
-      @RequestParam int id,
-      @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-      LocalDateTime startDate) {
-    try {
-      Lot lot = lotRepository.findById(id);
-      lot.setStartDate(startDate);
-      return new ResponseEntity<Lot>(lotRepository.save(lot), HttpStatus.OK);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+  @PatchMapping("/lot/patch/{id}")
+  public ResponseEntity<Lot> patchLot(@PathVariable int id,
+                                      @RequestBody Lot updateLot) {
+
+    updateLot.setId(id);
+
+    lotRepository.save(updateLot);
+    return new ResponseEntity<>(updateLot, HttpStatus.OK);
   }
+
+
 
 }
