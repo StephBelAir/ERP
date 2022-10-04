@@ -39,6 +39,23 @@ public class LotController {
   /*--====================  Get   ====================--*/
 
   /**
+   * @return lotsList
+   * @throws Exception
+   */
+  @ApiOperation(value = "Récupère TOUT les lots existants")
+  @GetMapping(value = "/lots")
+  public Iterable<Lot> getAllLots() throws Exception {
+    try {
+      Iterable<Lot> lotsList = lotRepository.findAll();
+      return lotsList;
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
+    return null;
+  }
+
+
+  /**
    * @param id
    * @return lotRepository.findById(id)
    */
@@ -65,7 +82,7 @@ public class LotController {
       List<Lot> lotsList = lotRepository.findAll();
 
       List<PlanningUserService> planingsUserDTOsList = new ArrayList<>();
-      for (Lot l: lotsList) {
+      for (Lot l : lotsList) {
         // transformer le lot en planning
         PlanningUserService p = PlanningUserService.fromLot(l);
         planingsUserDTOsList.add(p);
@@ -85,8 +102,8 @@ public class LotController {
    *
    * @return lotsListByProductName
    * @throws Exception
-   */
-  /*
+   * */
+
   @ApiOperation(value = "Récupère TOUT les lots SEULEMENT avec le productName")
   @GetMapping({"/lots/query"})
   public List<Lot> getFindAllByQuery() throws Exception {
@@ -98,7 +115,6 @@ public class LotController {
     }
     return null;
   }
-*/
 
 
   /*--====================  Post   ====================--*/
