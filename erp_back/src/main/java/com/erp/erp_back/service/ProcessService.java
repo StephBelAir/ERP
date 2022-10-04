@@ -73,10 +73,7 @@ public class ProcessService {
    * @param processService
    * @return process
    */
-  public static Process addProcess(ProcessService processService) {
-    Process process = new Process(processService.getProcessName());
-    return process;
-  }
+
 
   public static Process editProcess(ProcessService processService) {
     Process process = new Process(processService.getProcessId(), processService.getProcessName());

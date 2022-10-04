@@ -61,6 +61,12 @@ public class Machine implements Serializable {
     this.machineType = machineType;
   }
 
+  public Machine( int processOrder,
+                 String machineType) {
+    this.processOrder = processOrder;
+    this.machineType = machineType;
+  }
+
   public int getMachineId() {
     return machineId;
   }

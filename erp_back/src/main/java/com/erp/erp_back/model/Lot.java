@@ -105,7 +105,6 @@ public class Lot implements Serializable {
   }
 
   public Lot(int id, @Nullable String productName, int width) {
-    this.id = id;
     this.productName = productName;
     this.width = width;
   }
