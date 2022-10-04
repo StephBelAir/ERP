@@ -2,10 +2,13 @@ package com.erp.erp_back;
 
 import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.repository.LotRepository;
+import java.util.List;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
 @SpringBootTest
 class ErpBackApplicationTests {
@@ -14,7 +17,9 @@ class ErpBackApplicationTests {
 	private LotRepository lotRepository;
 
 	@Test
-	void contextLoads() {
+	@Order(1)
+	@Rollback(value = false)
+	void saveLotTest() {
 		// ARRANGE
 		int a = 2;
 		String b = "test";
@@ -25,9 +30,55 @@ class ErpBackApplicationTests {
 		lot = lotRepository.save(lot);
 
 		// ASSERT
-		Assertions.assertThat(lot.getId()).isEqualTo(2);
-
-
+		Assertions.assertThat(lot.getId()).isEqualTo(a);
 	}
+
+	@Test
+	@Order(2)
+	void getByIdLotTest() {
+		// ARRANGE
+		int a = 1;
+
+		// ACT
+		Lot lot = lotRepository.findById(a);
+
+		// ASSERT
+		Assertions.assertThat(lot.getId()).isEqualTo(a);
+	}
+
+	@Test
+	@Order(3)
+	void getAllLotTest() {
+		// ARRANGE
+		int a = 0;
+
+		// ACT
+		List<Lot> lot = lotRepository.findAll();
+
+		// ASSERT
+		Assertions.assertThat(lot.size()).isGreaterThan(a);
+	}
+
+	//Todo add patch Test
+
+
+	//Todo en cours
+
+	/*
+	@Test
+	@Order(4)
+	void deleteByIDLotTest() {
+		// ARRANGE
+		int a = 1;
+
+		// ACT
+		Lot lot = lotRepository.findById(a);
+		lotRepository.deleteById(a);
+		List<Lot> lot1 = lotRepository.findAll();
+
+
+		// ASSERT
+		Assertions.assertThat(lot1.size()).isNull();
+	} */
 
 }
