@@ -19,8 +19,6 @@ public interface LotRepository extends JpaRepository<Lot, Integer> {
  @Query("SELECT new Lot (l.id, l.productName) from Lot l")
  ArrayList<Lot> findAllByQuery();
 
-  @Query("SELECT new Lot (p.id, p.productName, p.width) from Lot p")
-  List<PlanningUserService> findAllPlaning();
 
   Lot save(Lot lot);
 }

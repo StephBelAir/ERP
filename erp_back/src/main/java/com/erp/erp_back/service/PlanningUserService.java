@@ -21,7 +21,6 @@ public class PlanningUserService {
   protected LocalDateTime actualEndDate;
 
 
-
   public PlanningUserService() {
   }
 
