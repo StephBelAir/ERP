@@ -1,6 +1,7 @@
 package com.erp.erp_back.service;
 
-import org.springframework.stereotype.Service;
+import com.erp.erp_back.model.Lot;
+import java.time.LocalDateTime;
 
 // = DTO
 
@@ -11,20 +12,29 @@ import org.springframework.stereotype.Service;
  * <br>
  * qui seront utilisées sont rassemblées avant d'aller dans un controlleur.
  */
-@Service
 public class PlanningUserService {
   protected int id;
   protected String productName;
   protected int width;
+  protected LocalDateTime startDate;
+  protected LocalDateTime endDate;
+  protected LocalDateTime actualEndDate;
+
 
 
   public PlanningUserService() {
   }
 
-  public PlanningUserService(int id, String productName, int width) {
-    this.id = id;
-    this.productName = productName;
-    this.width = width;
+  public static PlanningUserService fromLot(Lot orignal) {
+    PlanningUserService result = new PlanningUserService();
+    result.setId(orignal.getId());
+    result.setProductName(orignal.getProductName());
+    result.setWidth(orignal.getWidth());
+    result.setStartDate(orignal.getStartDate());
+    result.setEndDate(orignal.getEndDate());
+    result.setActualEndDate(orignal.getActualEndDate());
+
+    return result;
   }
 
   public int getId() {
@@ -51,4 +61,27 @@ public class PlanningUserService {
     this.width = width;
   }
 
+  public LocalDateTime getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(LocalDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+  public LocalDateTime getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(LocalDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+  public LocalDateTime getActualEndDate() {
+    return actualEndDate;
+  }
+
+  public void setActualEndDate(LocalDateTime actualEndDate) {
+    this.actualEndDate = actualEndDate;
+  }
 }

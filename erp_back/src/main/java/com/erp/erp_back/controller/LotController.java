@@ -8,24 +8,18 @@ import com.erp.erp_back.service.LotService;
 import com.erp.erp_back.service.PlanningUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import java.lang.reflect.Field;
 import java.time.LocalDateTime;
-import java.util.Map;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Ce contrôleur est une classe, dont l’objectif est de réagir à une interaction avec l’utilisateur vers un Lot.
- * <p>
+ * <br>
  * Il doit permettre à l'utilisateur de poster les requêtes HTTP des opérations de base du CRUD au serveur.
  */
 @Api("API pour les opérations CRUD sur les Lots")
@@ -39,24 +33,10 @@ public class LotController {
   @Autowired
   private ProcessRepository processRepository;
 
+  private PlanningUserService planningUserService;
+
 
   /*--====================  Get   ====================--*/
-
-  /**
-   * @return lotsList
-   * @throws Exception
-   */
-  @ApiOperation(value = "Récupère TOUT les lots existants")
-  @GetMapping(value = "/lots")
-  public Iterable<Lot> getAllLots() throws Exception {
-    try {
-      Iterable<Lot> lotsList = lotRepository.findAll();
-      return lotsList;
-    } catch (Exception ex) {
-      System.out.println(ex);
-    }
-    return null;
-  }
 
   /**
    * @param id
@@ -78,18 +58,25 @@ public class LotController {
    * @throws Exception
    */
 
-  /*
   @ApiOperation(value = "Récupère TOUT les lots existants Pour le role Planning")
   @GetMapping(value = "/lots/planning")
-  public Iterable<PlanningUserService> getAllLotsForPlanning() throws Exception {
+  public List<PlanningUserService> getAllLotsForPlanning() throws Exception {
     try {
-      Iterable<PlanningUserService> lotsListForPlanning = lotRepository.findAll(lot);
-      return lotsListForPlanning;
+      List<Lot> lotsList = lotRepository.findAll();
+
+      List<PlanningUserService> planingsUserDTOsList = new ArrayList<>();
+      for (Lot l: lotsList) {
+        // transformer le lot en planning
+        PlanningUserService p = PlanningUserService.fromLot(l);
+        planingsUserDTOsList.add(p);
+      }
+
+      return planingsUserDTOsList;
     } catch (Exception ex) {
       System.out.println(ex);
     }
     return null;
-  } */
+  }
 
   /*--====================  Get avec une Query ====================--*/
 
@@ -99,18 +86,19 @@ public class LotController {
    * @return lotsListByProductName
    * @throws Exception
    */
+  /*
   @ApiOperation(value = "Récupère TOUT les lots SEULEMENT avec le productName")
   @GetMapping({"/lots/query"})
-  public ArrayList<Lot> getFindAllByQuery() throws Exception {
+  public List<Lot> getFindAllByQuery() throws Exception {
     try {
-      ArrayList<Lot> lotsListByProductName = lotRepository.findAllByQuery();
+      List<Lot> lotsListByProductName = lotRepository.findAllByQuery();
       return lotsListByProductName;
     } catch (Exception ex) {
       System.out.println(ex);
     }
     return null;
   }
-
+*/
 
 
   /*--====================  Post   ====================--*/
@@ -123,11 +111,9 @@ public class LotController {
   @ApiOperation(value = "Créer UN lot")
   @PostMapping(value = "/lots/add")
   @ResponseBody
-  public List<Lot> createLot(@RequestBody Lot lotService) throws Exception {
+  public Lot createLot(@RequestBody Lot lotService) throws Exception {
     try {
-      lotRepository.save(lotService);
-      List<Lot> lots = lotRepository.findAll();
-      return lots;
+      return lotRepository.save(lotService);
     } catch (Exception ex) {
       System.out.println(ex);
     }
@@ -168,15 +154,13 @@ public class LotController {
    */
   @ApiOperation(value = "Supprime UN lot")
   @DeleteMapping(value = "/lots/delete/{id}")
-  public List<Lot> deleteOneLot(@PathVariable int id) throws Exception {
+  public void deleteOneLot(@PathVariable int id) throws Exception {
     try {
       lotRepository.deleteById(id);
-      List<Lot> lots = lotRepository.findAll();
-      return lots;
+
     } catch (Exception ex) {
       System.out.println(ex);
     }
-    return null;
   }
 
 
@@ -191,12 +175,12 @@ public class LotController {
   @ApiOperation(value = "Mise en production d'UN lot")
   @PutMapping(value = "/lots")
   @ResponseBody
-  public List<Lot> updateLot(@RequestBody LotService lotService) throws Exception {
+  public Lot updateLot(@RequestBody LotService lotService) throws Exception {
     try {
       Lot lot = LotService.editLot(lotService);
-      lotRepository.save(lot);
-      List<Lot> lots = lotRepository.findAll();
-      return lots;
+
+
+      return lotRepository.save(lot);
     } catch (Exception ex) {
       System.out.println(ex);
     }
@@ -230,8 +214,10 @@ public class LotController {
 
   @ApiOperation(value = "Mise en production d'UN lot avec SEULEMENT le param startDate")
   @PatchMapping("/lot/patch/startDate")
-  public ResponseEntity<Lot> patchStartDatePartially(@RequestParam int id, @RequestParam("startDate")
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate) {
+  public ResponseEntity<Lot> patchStartDatePartially(@RequestParam int id,
+                                                     @RequestParam("startDate")
+                                                     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                     LocalDateTime startDate) {
     try {
       Lot lot = lotRepository.findById(id);
       lot.setStartDate(startDate);
@@ -256,8 +242,10 @@ public class LotController {
 
   @ApiOperation(value = "Mise en production d'UN lot avec SEULEMENT le param actualEndDate")
   @PatchMapping("/lot/patch/actualEndDate")
-  public ResponseEntity<Lot> patchActualEndDatePartially(@RequestParam int id, @RequestParam("actualEndDate")
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime actualEndDate) {
+  public ResponseEntity<Lot> patchActualEndDatePartially(@RequestParam int id,
+                                                         @RequestParam("actualEndDate")
+                                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                         LocalDateTime actualEndDate) {
     try {
       Lot lot = lotRepository.findById(id);
       lot.setActualEndDate(actualEndDate);
@@ -266,7 +254,6 @@ public class LotController {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
-
 
 
 }
