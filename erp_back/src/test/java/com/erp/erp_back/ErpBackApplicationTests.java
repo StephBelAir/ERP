@@ -22,14 +22,14 @@ class ErpBackApplicationTests {
 
 	/**
 	 * Test CRUD Save
-	 * Un lot Id1 est créé au lancement de ERPBackApplication, l'Id 2 sera donc testé
+	 * 2 lots avec Id1 et Id2 sont créé au lancement de ERPBackApplication, l'Id 3 sera donc testé
 	 */
 	@Test
 	@Order(1)
 	@Rollback(value = false)
 	void saveLotTest() {
 		// ARRANGE
-		int a = 2;
+		int a = 3;
 		String b = "test";
 		int c = 35;
 		Lot lot = new Lot(a, b, c);
@@ -86,7 +86,7 @@ class ErpBackApplicationTests {
 
 		String testDate = "a = " + a + "b = " + b;
 		// 2022-10-05T11:43:34.658528618
-		// 2022-10-05T11:47:24.801616729
+		// Wed Oct 05 14:12:14 CEST 2022
 
 		// ACT
 

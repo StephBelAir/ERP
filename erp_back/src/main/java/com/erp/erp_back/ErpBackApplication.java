@@ -38,11 +38,11 @@ public class ErpBackApplication {
       Machine machineCreated;
       for (int j = 0; j < 4; j++) {
         Process processList = new Process();
-        for (int i = 0; i < 4; i++) {
-          machineCreated = new Machine(i % 17, "TTH");
-          machineCreated = machineRepository.save(machineCreated);
-          processList.addMachine(machineCreated);
-          processRepository.save(processList);
+        for (int i = 1; i < 4; i++) {
+            machineCreated = new Machine(i*3%17, 0, "TTH");
+            machineCreated = machineRepository.save(machineCreated);
+            processList.addMachine(machineCreated);
+            processRepository.save(processList);
         }
       }
 
