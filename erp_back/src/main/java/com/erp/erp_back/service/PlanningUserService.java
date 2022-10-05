@@ -24,6 +24,12 @@ public class PlanningUserService {
   public PlanningUserService() {
   }
 
+  /**
+   * Permets de récupérer uniquement les champs utiles du lot
+   *
+   * @param orignal
+   * @return
+   */
   public static PlanningUserService fromLot(Lot orignal) {
     PlanningUserService result = new PlanningUserService();
     result.setId(orignal.getId());
