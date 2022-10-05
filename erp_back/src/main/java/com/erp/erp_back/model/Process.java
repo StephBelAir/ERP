@@ -49,7 +49,11 @@ public class Process implements Serializable {
     this.processName = processName;
   }
 
-
+  public Process(int processId, String processName, List<Machine> machine) {
+    this.processId = processId;
+    this.processName = processName;
+    this.machine = machine;
+  }
 
   /**
    * @param processName

@@ -2,6 +2,7 @@ package com.erp.erp_back;
 
 import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.model.Machine;
+import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.LotRepository;
 import com.erp.erp_back.repository.MachineRepository;
 import com.erp.erp_back.repository.ProcessRepository;
@@ -35,13 +36,21 @@ public class ErpBackApplication {
     return args -> {
 
       Machine machineCreated;
-      machineCreated = new Machine(4, "TTH");
-      machineCreated = machineRepository.save(machineCreated);
+      for (int j = 0; j < 4; j++) {
+        Process processList = new Process();
+        for (int i = 0; i < 4; i++) {
+          machineCreated = new Machine(i % 17, "TTH");
+          machineCreated = machineRepository.save(machineCreated);
+          processList.addMachine(machineCreated);
+          processRepository.save(processList);
+        }
+      }
 
       Lot lotCreated;
-      lotCreated = new Lot(1, "HSR", 30);
-      lotCreated = lotRepository.save(lotCreated);
-
+        for (int k = 0; k < 2; k++) {
+          lotCreated = new Lot(1, "HSR", 30);
+          lotCreated = lotRepository.save(lotCreated);
+      }
 
       LOGGER.info("*** Application started with Default Data ***");
 
