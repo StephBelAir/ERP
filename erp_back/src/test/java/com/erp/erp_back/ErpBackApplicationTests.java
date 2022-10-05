@@ -2,6 +2,8 @@ package com.erp.erp_back;
 
 import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.repository.LotRepository;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Order;
@@ -74,14 +76,40 @@ class ErpBackApplicationTests {
 
 	//Todo add patch Test
 
+	@Test
+	@Order(4)
+	void patchLotStartDate(){
+
+		// ARRANGE
+		LocalDateTime a = LocalDateTime.now();
+		Date b = new Date();
+
+		String testDate = "a = " + a + "b = " + b;
+		// 2022-10-05T11:43:34.658528618
+		// 2022-10-05T11:47:24.801616729
+
+		// ACT
+
+		Lot lot = lotRepository.findById(1);
+		lot.setStartDate(a);
+		Lot lotUpdated = lotRepository.save(lot);
+
+		// ASSERT
+		Assertions.assertThat(lotUpdated.getStartDate()).isEqualTo(a);
+		System.out.println(testDate);
+
+	}
+
+
 
 	//Todo en cours
 
 	/**
 	 * Test CRUD Delete
 	 */
+	/*
 	@Test
-	@Order(4)
+	@Order(5)
 	void deleteByIDLotTest() {
 		// ARRANGE
 		int a = 1;
@@ -94,6 +122,6 @@ class ErpBackApplicationTests {
 
 		// ASSERT
 		Assertions.assertThat(lot1.size()).isNull();
-	}
+	}*/
 
 }
