@@ -19,6 +19,7 @@ public class ProcessService {
   protected int processId;
   protected String processName;
   protected List<Machine> machines;
+  protected int productionTimeTotalForOneParts;
 
   static ProcessRepository processRepository;
 
@@ -69,11 +70,14 @@ public class ProcessService {
     ProcessService.processRepository = processRepository;
   }
 
+  public int getProductionTimeTotalForOneParts() {
+    return productionTimeTotalForOneParts;
+  }
+
   /**
    * @param processService
    * @return process
    */
-
 
   public static Process editProcess(ProcessService processService) {
     Process process = new Process(processService.getProcessId(), processService.getProcessName());

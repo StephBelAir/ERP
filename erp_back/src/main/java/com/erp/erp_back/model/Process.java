@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * L'instance de la classe Process qui sera persistante, on pourra sauvegarder dans / charger depuis la base de données relationnelle ERP.
  * <p>
@@ -34,6 +35,20 @@ public class Process implements Serializable {
 
   public Process() {
   }
+
+  public int getProductionTimeTotalForOneParts() {
+    int allTimeForOneParts = 0;
+    for (Machine machine : this.machine) {
+      if (machine.getProductionTime() != 0) {
+
+        allTimeForOneParts += machine.getProductionTime();
+      } else {
+        return allTimeForOneParts = 0;
+      }
+    }
+    return allTimeForOneParts;
+  }
+
 
   /**
    * @param processName
