@@ -16,6 +16,12 @@ class ErpBackApplicationTests {
 	@Autowired
 	private LotRepository lotRepository;
 
+
+
+	/**
+	 * Test CRUD Save
+	 * Un lot Id1 est créé au lancement de ERPBackApplication, l'Id 2 sera donc testé
+	 */
 	@Test
 	@Order(1)
 	@Rollback(value = false)
@@ -31,8 +37,12 @@ class ErpBackApplicationTests {
 
 		// ASSERT
 		Assertions.assertThat(lot.getId()).isEqualTo(a);
+
 	}
 
+	/**
+	 * Test CRUD GetByID
+	 */
 	@Test
 	@Order(2)
 	void getByIdLotTest() {
@@ -46,6 +56,9 @@ class ErpBackApplicationTests {
 		Assertions.assertThat(lot.getId()).isEqualTo(a);
 	}
 
+	/**
+	 * Test CRUD GetALL
+	 */
 	@Test
 	@Order(3)
 	void getAllLotTest() {
@@ -64,7 +77,9 @@ class ErpBackApplicationTests {
 
 	//Todo en cours
 
-	/*
+	/**
+	 * Test CRUD Delete
+	 */
 	@Test
 	@Order(4)
 	void deleteByIDLotTest() {
@@ -79,6 +94,6 @@ class ErpBackApplicationTests {
 
 		// ASSERT
 		Assertions.assertThat(lot1.size()).isNull();
-	} */
+	}
 
 }
