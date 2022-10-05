@@ -25,7 +25,7 @@ public class Machine implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   protected int machineId;
-  protected LocalDateTime productionTime;
+  protected int productionTime;
 
   // Format à confirmer
   protected int processOrder;
@@ -40,7 +40,7 @@ public class Machine implements Serializable {
    * @param processOrder
    * @param machineType
    */
-  public Machine(LocalDateTime productionTime, int processOrder, String machineType) {
+  public Machine(int productionTime, int processOrder, String machineType) {
     this.productionTime = productionTime;
     this.processOrder = processOrder;
     this.machineType = machineType;
@@ -53,7 +53,7 @@ public class Machine implements Serializable {
    * @param machineType
    */
 
-  public Machine(int machineId, LocalDateTime productionTime, int processOrder,
+  public Machine(int machineId, int productionTime, int processOrder,
                  String machineType) {
     this.machineId = machineId;
     this.productionTime = productionTime;
@@ -75,11 +75,11 @@ public class Machine implements Serializable {
     this.machineId = machineId;
   }
 
-  public LocalDateTime getProductionTime() {
+  public int getProductionTime() {
     return productionTime;
   }
 
-  public void setProductionTime(LocalDateTime productionTime) {
+  public void setProductionTime(int productionTime) {
     this.productionTime = productionTime;
   }
 

@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class MachineService {
 
   protected int machineId;
-  protected LocalDateTime productionTime;
+  protected int productionTime;
   protected int processOrder;
   protected String machineType;
 
@@ -34,11 +34,11 @@ public class MachineService {
     this.machineId = machineId;
   }
 
-  public LocalDateTime getProductionTime() {
+  public int getProductionTime() {
     return productionTime;
   }
 
-  public void setProductionTime(LocalDateTime productionTime) {
+  public void setProductionTime(int productionTime) {
     this.productionTime = productionTime;
   }
 
