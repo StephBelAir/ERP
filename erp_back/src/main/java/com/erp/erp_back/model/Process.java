@@ -36,18 +36,16 @@ public class Process implements Serializable {
   public Process() {
   }
 
-  public int getProductionTimeTotalForOneParts() {
-    int allTimeForOneParts = 0;
-    for (Machine machine : this.machine) {
-      if (machine.getProductionTime() != 0) {
 
-        allTimeForOneParts += machine.getProductionTime();
-      } else {
-        return allTimeForOneParts = 0;
-      }
+  public int getProductionTimeTotalForOneParts() {
+    int ProcessTimeForOneParts = 0;
+    for (Machine machines : this.machine) {
+        ProcessTimeForOneParts += machines.getProductionTime();
+
     }
-    return allTimeForOneParts;
+    return ProcessTimeForOneParts;
   }
+
 
 
   /**
