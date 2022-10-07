@@ -42,11 +42,19 @@ public class Lot implements Serializable {
   @ManyToOne(targetEntity = Process.class, fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
   protected Process process;
 
-  public int getProductionTimeByQuantity() {
+  public long getProductionTimeByQuantity() {
     if (process != null) {
       return this.getQuantity() * process.getProductionTimeTotalForOneParts();
     } else {
       return 0;
+    }
+  }
+
+  public LocalDateTime getEstimateEndDate() {
+    if (startDate != null)  {
+      return startDate.plusMinutes(getProductionTimeByQuantity());
+    } else {
+      return null;
     }
   }
 

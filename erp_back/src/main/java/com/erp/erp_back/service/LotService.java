@@ -27,7 +27,9 @@ public class LotService {
   protected LocalDateTime endDate;
   protected LocalDateTime actualEndDate;
 
-  protected int productionTimeByQuantity;
+  protected LocalDateTime estimateEndDate;
+
+  protected long productionTimeByQuantity;
 
   static LotRepository lotRepository;
 
@@ -114,8 +116,12 @@ public class LotService {
     this.actualEndDate = actualEndDate;
   }
 
-  public int getProductionTimeByQuantity() {
+  public long getProductionTimeByQuantity() {
     return productionTimeByQuantity;
+  }
+
+  public LocalDateTime getEstimateEndDate() {
+    return estimateEndDate;
   }
 
   /**
