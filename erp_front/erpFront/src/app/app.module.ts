@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+
 import { MachinePageComponent } from './components/machine-page/machine-page.component';
 import { ProcessPageComponent } from './components/process-page/process-page.component';
 import { LotPageComponent } from './components/lot-page/lot-page.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
+import { MachineDialogComponent } from './components/machine-dialog/machine-dialog.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MachinePageComponent,
     ProcessPageComponent,
     LotPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MachineDialogComponent
+
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,11 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
       {path: '**', component: PageNotFoundComponent}
     ]),
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

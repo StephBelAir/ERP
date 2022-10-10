@@ -1,7 +1,11 @@
-<h1>Angular Router Sample</h1>
-<nav>
-  <a class="button" routerLink="/lot-page" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Lot Center</a> |
-  <a class="button" routerLink="/process-page" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Process Center</a> |
-  <a class="button" routerLink="/machine-page" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Machine Center</a>
-</nav>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <span class="material-icons" style="transform: rotate(180deg); color: rgb(255, 0, 0);">umbrella</span> </button>
+  <span>ERP</span>
+  <span class="example-spacer"></span>
+      <a class="button" routerLink="/lot-page" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Lot Center</a> |
+      <a class="button" routerLink="/process-page" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Process Center</a> |
+      <a class="button" routerLink="/machine-page" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Machine Center</a>
+</mat-toolbar>
+
 <router-outlet></router-outlet>
