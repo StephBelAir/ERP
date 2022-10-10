@@ -203,11 +203,11 @@ public class LotController {
     return null;
   }
 
-  /*--====================  Patch Mise en Production pour Plusieurs Paramètres   ====================--*/
+  /*--====================  Patch Mise en Production pour StartDate & EndDate   ====================--*/
 
   /**
    * Mise en route ou Fin de lot <br>
-   * Patch Lot sans effacer les autres paramètres
+   * Patch StartDate et EndDate Lot sans effacer les autres paramètres
    *
    * @param id
    * @param updateLot
@@ -219,9 +219,12 @@ public class LotController {
   public ResponseEntity<Lot> patchLot(@PathVariable int id,
                                       @RequestBody Lot updateLot) {
 
-    updateLot.setId(id);
-
-    lotRepository.save(updateLot);
+    Lot lot = lotRepository.findById(id);
+    Process process = lot.getProcess();
+    lot.setProcess(process);
+    lot.setStartDate(updateLot.getStartDate());
+    lot.setEndDate(updateLot.getEndDate());
+    lotRepository.save(lot);
     return new ResponseEntity<>(updateLot, HttpStatus.OK);
   }
 
