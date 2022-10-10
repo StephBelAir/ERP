@@ -275,4 +275,19 @@ public class LotController {
   }
 
 
+  @ApiOperation(value = "Mise en production d'UN lot avec SEULEMENT le param quantity")
+  @PatchMapping("/lot/patch/quantity")
+  public ResponseEntity<Lot> patchActualEndDatePartially(@RequestParam int id,
+                                                         @RequestParam("quantity")
+                                                         int quantity) {
+    try {
+      Lot lot = lotRepository.findById(id);
+      lot.setQuantity(quantity);
+      return new ResponseEntity<Lot>(lotRepository.save(lot), HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+
 }
