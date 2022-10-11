@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MachineDialogComponent} from "../machine-dialog/machine-dialog.component";
+import {MachineService} from "../../services/machine.service";
 
 
 @Component({
@@ -10,7 +11,8 @@ import {MachineDialogComponent} from "../machine-dialog/machine-dialog.component
 })
 export class MachinePageComponent implements OnInit {
 
-  constructor(private dialog : MatDialog) { }
+  constructor(private dialog: MatDialog, private machineService: MachineService) {
+  }
 
   openDialog() {
     this.dialog.open(MachineDialogComponent, {
@@ -18,7 +20,20 @@ export class MachinePageComponent implements OnInit {
     });
   }
 
+  getAllMachines() {
+    this.machineService.getMachine()
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          alert("Error while fetching the Records !!")
+        }
+      })
+  }
+
   ngOnInit(): void {
+    this.getAllMachines()
   }
 
 }
