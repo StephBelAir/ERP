@@ -15,6 +15,8 @@ import { ProcessPageComponent } from './components/process-page/process-page.com
 import { LotPageComponent } from './components/lot-page/lot-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MachineDialogComponent } from './components/machine-dialog/machine-dialog.component';
+import { ProcessDialogComponent } from './components/process-dialog/process-dialog.component';
+import { LotDialogComponent } from './components/lot-dialog/lot-dialog.component';
 
 
 import { RouterModule } from '@angular/router';
@@ -22,10 +24,11 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { ProcessDialogComponent } from './components/process-dialog/process-dialog.component';
-import { LotDialogComponent } from './components/lot-dialog/lot-dialog.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
-// Form ??
+
 
 
 
@@ -62,7 +65,10 @@ import { LotDialogComponent } from './components/lot-dialog/lot-dialog.component
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

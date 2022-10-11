@@ -1,5 +1,54 @@
 <div class="container">
-      <div class="button-row">
-        <button mat-stroked-button (click)="openDialog()" color="warn">+ Machine</button>
+  <div class="button-row">
+    <button mat-stroked-button (click)="openDialog()" color="warn">+ Machine</button>
+  </div>
+</div>
+
+<div class="container">
+  <div style="margin-top: 75px;">
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Découpe" #input>
+      </mat-form-field>
+
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <!-- machineId Column -->
+          <ng-container matColumnDef="machineId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine ID</th>
+            <td mat-cell *matCellDef="let row"> {{row.machineId}} </td>
+          </ng-container>
+
+          <!-- productionTime Column -->
+          <ng-container matColumnDef="productionTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Production Time in min</th>
+            <td mat-cell *matCellDef="let row"> {{row.productionTime}} min</td>
+          </ng-container>
+
+          <!-- processOrder Column -->
+          <ng-container matColumnDef="processOrder">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> In Process Order</th>
+            <td mat-cell *matCellDef="let row"> {{row.processOrder}} </td>
+          </ng-container>
+
+          <!-- machineType Column -->
+          <ng-container matColumnDef="machineType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine Type</th>
+            <td mat-cell *matCellDef="let row"> {{row.machineType}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
       </div>
+
+  </div>
 </div>
