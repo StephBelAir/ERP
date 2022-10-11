@@ -1,1 +1,16 @@
-<p>process-dialog works!</p>
+<h3 mat-dialog-title>Création de Process</h3>
+
+<form [formGroup]="processForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Nom du process</mat-label>
+      <input formControlName="processName" matInput  placeholder="Process Name">
+    </mat-form-field>
+  </div>
+</form>
+
+
+<div mat-dialog-action [align]="'end'">
+  <button mat-stroked-button color="basic" (click)="addProcess()" >Save</button>
+  <button style="margin-left: 8px;" mat-stroked-button color="warn" mat-dialog-close>Close X </button>
+</div>

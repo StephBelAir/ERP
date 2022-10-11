@@ -2,3 +2,10 @@
 
 html, body { height: 100%; }
 body { margin: 2ch; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.button-row {
+  position: absolute;
+  top: 15%;
+  left: 85%;
+  width: 490px;
+}

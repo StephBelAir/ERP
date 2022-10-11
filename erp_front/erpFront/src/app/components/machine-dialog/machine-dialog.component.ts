@@ -38,8 +38,4 @@ export class MachineDialogComponent implements OnInit {
       }
     }
 
-
-/*
-*/
-
 }
