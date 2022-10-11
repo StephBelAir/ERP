@@ -23,6 +23,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ProcessDialogComponent } from './components/process-dialog/process-dialog.component';
+import { LotDialogComponent } from './components/lot-dialog/lot-dialog.component';
 
 // Form ??
 
@@ -37,7 +38,8 @@ import { ProcessDialogComponent } from './components/process-dialog/process-dial
     LotPageComponent,
     PageNotFoundComponent,
     MachineDialogComponent,
-    ProcessDialogComponent
+    ProcessDialogComponent,
+    LotDialogComponent
 
   ],
   imports: [

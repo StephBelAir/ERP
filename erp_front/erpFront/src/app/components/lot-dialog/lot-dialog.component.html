@@ -1,0 +1,47 @@
+<h3 mat-dialog-title>Création de lot</h3>
+
+<form [formGroup]="lotForm">
+  <div mat-dialog-content>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product name</mat-label>
+      <mat-select formControlName="productName" placeholder="Product name">
+        <mat-option value="SR">SR</mat-option>
+        <mat-option value="SHS">SHS</mat-option>
+        <mat-option value="HSR">HSR</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Width</mat-label>
+      <mat-select formControlName="width" placeholder="Width">
+        <mat-option value="15">15</mat-option>
+        <mat-option value="20">20</mat-option>
+        <mat-option value="25">25</mat-option>
+        <mat-option value="30">30</mat-option>
+        <mat-option value="35">35</mat-option>
+        <mat-option value="45">45</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input formControlName="quantity" matInput type="number" placeholder="Quantity">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Length</mat-label>
+      <input formControlName="length" matInput type="number" placeholder="Length">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Parts Type</mat-label>
+      <input formControlName="type" matInput placeholder="Parts Type">
+    </mat-form-field>
+  </div>
+</form>
+
+<div mat-dialog-action [align]="'end'">
+  <button mat-stroked-button color="basic" (click)="addLot()" >Save</button>
+  <button style="margin-left: 8px;" mat-stroked-button color="warn" mat-dialog-close>Close X </button>
+</div>
