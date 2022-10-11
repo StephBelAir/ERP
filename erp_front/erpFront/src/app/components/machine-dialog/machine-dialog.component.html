@@ -1,4 +1,37 @@
-<h3 mat-dialog-title>Add Machine Form</h3>
-<div mat-dialog-content>
+<h3 mat-dialog-title>Création de machine</h3>
 
-</div>
+  <form [formGroup]="machineForm">
+
+    <div mat-dialog-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Durée en minutes</mat-label>
+        <input formControlName="productionTime" matInput type="number" placeholder="Production Time">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Machine Type</mat-label>
+        <mat-select formControlName="machineType" placeholder="Machine Type">
+          <mat-option value="Traitement thermique">Traitement thermique</mat-option>
+          <mat-option value="Redressage rouleaux">Redressage rouleaux</mat-option>
+          <mat-option value="Détorsion">Détorsion</mat-option>
+          <mat-option value="Redressage intermédiaire 1">Redressage intermédiaire 1</mat-option>
+          <mat-option value="Redressage automatique">Redressage automatique</mat-option>
+          <mat-option value="Perçage">Perçage</mat-option>
+          <mat-option value="Découpe">Découpe</mat-option>
+          <mat-option value="Redressage intermédiaire 2">Redressage intermédiaire 2</mat-option>
+          <mat-option value="Fraisage">Fraisage</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Machine Order</mat-label>
+        <input formControlName="processOrder" matInput type="number" placeholder="Machine order">
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div mat-dialog-action [align]="'end'">
+    <button mat-stroked-button color="basic" (click)="addMachine()" >Save</button>
+    <button style="margin-left: 8px;" mat-stroked-button color="warn" mat-dialog-close>Close X </button>
+  </div>
+

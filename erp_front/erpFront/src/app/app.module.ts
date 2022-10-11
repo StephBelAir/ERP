@@ -19,6 +19,10 @@ import { MachineDialogComponent } from './components/machine-dialog/machine-dial
 
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { ProcessDialogComponent } from './components/process-dialog/process-dialog.component';
 
 // Form ??
 
@@ -32,7 +36,8 @@ import {MatButtonModule} from "@angular/material/button";
     ProcessPageComponent,
     LotPageComponent,
     PageNotFoundComponent,
-    MachineDialogComponent
+    MachineDialogComponent,
+    ProcessDialogComponent
 
   ],
   imports: [
@@ -51,7 +56,11 @@ import {MatButtonModule} from "@angular/material/button";
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

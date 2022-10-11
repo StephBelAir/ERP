@@ -15,6 +15,6 @@ export class MachineService {
   }
 
   getMachine(){
-    return this.httpClient.get<any>(`${this.apiUrl}/machines`);
+    return this.httpClient.get <any>(`${this.apiUrl}/machines`);
   }
 }

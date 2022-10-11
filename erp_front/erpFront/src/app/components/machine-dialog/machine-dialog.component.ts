@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {MachineService} from "../../services/machine.service";
+import {MatDialogRef} from "@angular/material/dialog"
 
 @Component({
   selector: 'app-machine-dialog',
@@ -9,27 +10,36 @@ import {MachineService} from "../../services/machine.service";
 })
 export class MachineDialogComponent implements OnInit {
 
-  constructor() { }
+  machineForm !: FormGroup;
+
+  constructor(private formBuilder : FormBuilder, private machineService : MachineService, private dialogRef : MatDialogRef<MachineDialogComponent>) { }
 
   ngOnInit(): void {
+    this.machineForm = this.formBuilder.group({
+      productionTime : ['', Validators.required],
+      machineType  : ['', Validators.required],
+      processOrder  : ['', Validators.required]
+    })
   }
+
+    addMachine() {
+      if (this.machineForm.valid){
+        this.machineService.postMachine(this.machineForm.value)
+          .subscribe({
+            next: (res) => {
+              alert("Machine added successfully");
+              this.machineForm.reset();
+              this.dialogRef.close('save');
+            },
+            error: () => {
+              alert("Error while adding the product")
+            }
+          })
+      }
+    }
 
 
 /*
-  addMachine() {
-    if (this.machine Form.valid){
-      this.apiUrl.postmachine(this.machineForm.value)
-        .subscribe({
-          next: (res) => {
-            alert("Machine added successfully");
-            this.machineForm.reset();
-            this.dialogRef.close('save');
-          },
-          error: () => {
-            alert("Error while adding the product")
-          }
-        })
-    }
-  }*/
+*/
 
 }
