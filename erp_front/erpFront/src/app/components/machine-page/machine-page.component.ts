@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {MachineDialogComponent} from "../machine-dialog/machine-dialog.component";
 import {MachineService} from "../../services/machine.service";
 import {MatPaginator} from '@angular/material/paginator';
@@ -20,8 +20,10 @@ export class MachinePageComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private machineService: MachineService) {
+  constructor(private dialog: MatDialog, private machineService: MachineService) { }
 
+  ngOnInit(): void {
+    this.getAllMachines()
   }
 
   openDialog() {
@@ -34,7 +36,7 @@ export class MachinePageComponent implements OnInit {
     this.machineService.getMachine()
       .subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           this.dataSource = new MatTableDataSource<any>(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort
@@ -54,9 +56,5 @@ export class MachinePageComponent implements OnInit {
     }
   }
 
-
-  ngOnInit(): void {
-    this.getAllMachines()
-  }
 
 }
