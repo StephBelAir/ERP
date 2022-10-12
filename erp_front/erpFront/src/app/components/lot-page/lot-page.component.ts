@@ -13,7 +13,7 @@ import {MatSort} from "@angular/material/sort";
 })
 export class LotPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'productName', 'length', 'quantity', 'width', 'type' ];
+  displayedColumns: string[] = ['id', 'productName', 'width', 'quantity', 'length', 'type' ];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
