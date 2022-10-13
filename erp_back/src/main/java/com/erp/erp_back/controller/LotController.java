@@ -4,6 +4,7 @@ import com.erp.erp_back.model.Lot;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.LotRepository;
 import com.erp.erp_back.repository.ProcessRepository;
+import com.erp.erp_back.service.BindLotAndProcessService;
 import com.erp.erp_back.service.LotService;
 import com.erp.erp_back.service.PlanningUserService;
 import io.swagger.annotations.Api;
@@ -102,7 +103,7 @@ public class LotController {
    *
    * @return lotsListByProductName
    * @throws Exception
-   * */
+   */
 
   @ApiOperation(value = "Récupère TOUT les lots SEULEMENT avec le productName")
   @GetMapping({"/lots/query"})
@@ -202,6 +203,27 @@ public class LotController {
     }
     return null;
   }
+
+  /*--====================  Patch Ajouter UN process dans UN lot   ====================--*/
+
+  @ApiOperation(value = "Ajoute UN lot")
+  @PatchMapping(value = "/lot/addProcess")
+  @ResponseBody
+  public ResponseEntity<Lot> patchAddProcessInLot(
+      @RequestBody BindLotAndProcessService updateLot) throws Exception {
+    try {
+      Lot lot = this.lotRepository.findById(updateLot.getId());
+      Process process = this.processRepository.findById(updateLot.getProcessId());
+      lot.setProcess(process);
+      lotRepository.save(lot);
+      return new ResponseEntity<>(lot, HttpStatus.OK);
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
+    return null;
+  }
+
+
 
   /*--====================  Patch Mise en Production pour StartDate & EndDate   ====================--*/
 
