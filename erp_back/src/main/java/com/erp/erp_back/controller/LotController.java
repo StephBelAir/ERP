@@ -206,7 +206,7 @@ public class LotController {
 
   /*--====================  Patch Ajouter UN process dans UN lot   ====================--*/
 
-  @ApiOperation(value = "Ajoute UN lot")
+  @ApiOperation(value = "Ajoute UN process dans UN lot")
   @PatchMapping(value = "/lot/addProcess")
   @ResponseBody
   public ResponseEntity<Lot> patchAddProcessInLot(
