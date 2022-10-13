@@ -27,6 +27,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { LotAddProcessDialogComponent } from './components/lot-add-process-dialog/lot-add-process-dialog.component';
 
 
 
@@ -42,7 +43,8 @@ import {MatSortModule} from '@angular/material/sort';
     PageNotFoundComponent,
     MachineDialogComponent,
     ProcessDialogComponent,
-    LotDialogComponent
+    LotDialogComponent,
+    LotAddProcessDialogComponent
 
   ],
   imports: [

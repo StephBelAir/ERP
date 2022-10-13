@@ -5,6 +5,7 @@ import {LotService} from "../../services/lot.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {LotAddProcessDialogComponent} from "../lot-add-process-dialog/lot-add-process-dialog.component";
 
 @Component({
   selector: 'app-lot-page',
@@ -27,6 +28,12 @@ export class LotPageComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(LotDialogComponent, {
+      width: '30%'
+    });
+  }
+
+  openAddDialog() {
+    this.dialog.open(LotAddProcessDialogComponent, {
       width: '30%'
     });
   }
