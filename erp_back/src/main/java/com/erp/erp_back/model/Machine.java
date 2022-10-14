@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * L'instance de la classe Machine qui sera persistante, on pourra sauvegarder dans / charger depuis la base de données relationnelle ERP.
@@ -27,8 +26,7 @@ public class Machine implements Serializable {
   protected int machineId;
   protected int productionTime;
 
-  // Format à confirmer
-  protected int processOrder;
+  protected String machineName;
   protected String machineType;
 
 
@@ -37,33 +35,33 @@ public class Machine implements Serializable {
 
   /**
    * @param productionTime
-   * @param processOrder
+   * @param machineName
    * @param machineType
    */
-  public Machine(int productionTime, int processOrder, String machineType) {
+  public Machine(int productionTime, String machineName, String machineType) {
     this.productionTime = productionTime;
-    this.processOrder = processOrder;
+    this.machineName = machineName;
     this.machineType = machineType;
   }
 
   /**
    * @param machineId
    * @param productionTime
-   * @param processOrder
+   * @param machineName
    * @param machineType
    */
 
-  public Machine(int machineId, int productionTime, int processOrder,
+  public Machine(int machineId, int productionTime, String machineName,
                  String machineType) {
     this.machineId = machineId;
     this.productionTime = productionTime;
-    this.processOrder = processOrder;
+    this.machineName = machineName;
     this.machineType = machineType;
   }
 
-  public Machine( int processOrder,
+  public Machine(String machineName,
                  String machineType) {
-    this.processOrder = processOrder;
+    this.machineName = machineName;
     this.machineType = machineType;
   }
 
@@ -83,12 +81,12 @@ public class Machine implements Serializable {
     this.productionTime = productionTime;
   }
 
-  public int getProcessOrder() {
-    return processOrder;
+  public String getMachineName() {
+    return machineName;
   }
 
-  public void setProcessOrder(int processOrder) {
-    this.processOrder = processOrder;
+  public void setMachineName(String processOrder) {
+    this.machineName = processOrder;
   }
 
   public String getMachineType() {

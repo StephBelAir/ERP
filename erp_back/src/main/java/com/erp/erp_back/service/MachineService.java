@@ -18,7 +18,7 @@ public class MachineService {
 
   protected int machineId;
   protected int productionTime;
-  protected int processOrder;
+  protected String processOrder;
   protected String machineType;
 
   static MachineRepository machineRepository;
@@ -42,11 +42,11 @@ public class MachineService {
     this.productionTime = productionTime;
   }
 
-  public int getProcessOrder() {
+  public String getProcessOrder() {
     return processOrder;
   }
 
-  public void setProcessOrder(int processOrder) {
+  public void setProcessOrder(String processOrder) {
     this.processOrder = processOrder;
   }
 

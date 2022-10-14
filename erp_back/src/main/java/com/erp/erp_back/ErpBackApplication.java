@@ -39,7 +39,7 @@ public class ErpBackApplication {
       for (int j = 0; j < 4; j++) {
         Process processList = new Process();
         for (int i = 1; i < 4; i++) {
-            machineCreated = new Machine(i%7, 0, "TTH");
+            machineCreated = new Machine(i%7, "A", "TTH");
             machineCreated = machineRepository.save(machineCreated);
             processList.addMachine(machineCreated);
             processRepository.save(processList);
