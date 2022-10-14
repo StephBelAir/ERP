@@ -30,7 +30,7 @@ export class LotAddProcessDialogComponent implements OnInit {
           next: (res) => {
             alert("Machine added successfully");
             this.addProcessForm.reset();
-            this.dialogRef.close('save');
+            this.dialogRef.close('saveProcess');
           },
           error: () => {
             alert("Error while adding the product")

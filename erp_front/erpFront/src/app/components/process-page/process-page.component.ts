@@ -28,7 +28,11 @@ export class ProcessPageComponent implements OnInit {
   openDialog() {
     this.dialog.open(ProcessDialogComponent, {
       width: '30%'
-    });
+    }).afterClosed().subscribe(val=>{
+      if (val === 'save'){
+        this.getAllProcess();
+      }
+    })
   }
 
   getAllProcess() {

@@ -29,7 +29,11 @@ export class MachinePageComponent implements OnInit {
   openDialog() {
     this.dialog.open(MachineDialogComponent, {
       width: '30%'
-    });
+    }).afterClosed().subscribe(val=>{
+      if (val === 'save'){
+        this.getAllMachines();
+      }
+    })
   }
 
   getAllMachines() {

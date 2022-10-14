@@ -29,13 +29,21 @@ export class LotPageComponent implements OnInit {
   openDialog() {
     this.dialog.open(LotDialogComponent, {
       width: '30%'
-    });
+    }).afterClosed().subscribe(val=>{
+      if (val === 'save'){
+        this.getAllLots();
+      }
+    })
   }
 
   openAddDialog() {
     this.dialog.open(LotAddProcessDialogComponent, {
       width: '30%'
-    });
+    }).afterClosed().subscribe(val=>{
+      if (val === 'saveProcess'){
+        this.getAllLots();
+      }
+    })
   }
 
   getAllLots() {
