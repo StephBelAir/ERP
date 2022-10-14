@@ -14,7 +14,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class MachinePageComponent implements OnInit {
 
-  displayedColumns: string[] = ['machineId', 'productionTime', 'processOrder', 'machineType'];
+  displayedColumns: string[] = ['machineId', 'productionTime', 'machineName', 'machineType'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
