@@ -4,11 +4,14 @@ import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.MachineRepository;
 import com.erp.erp_back.repository.ProcessRepository;
+import com.erp.erp_back.service.BindProcessAndMachinesService;
 import com.erp.erp_back.service.ProcessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -138,6 +141,32 @@ public class ProcessController {
     }
     return null;
   }
+
+  /*--====================  Patch Ajouter DES machines dans UN process   ====================--*/
+
+  @ApiOperation(value = "Ajoute DES machines dans UN process")
+  @PatchMapping(value = "/processes/addMachines")
+  @ResponseBody
+  public ResponseEntity<Process> patchAddMachinesInProcess(
+      @RequestBody BindProcessAndMachinesService updateProcess) throws Exception {
+    try {
+      Process process = this.processRepository.findByProcessName(updateProcess.getProcessName());
+      List<Machine> machineName = new ArrayList<Machine>();
+      for (int i = 0; i < updateProcess.getMachineList().size(); i++) {
+        String name = updateProcess.getMachineList().get(i).getMachineName();
+        Machine m = this.processRepository.findByMachineName(name);
+        machineName.add(m);
+      }
+      process.setMachine(machineName);
+      processRepository.save(process);
+      return new ResponseEntity<>(process, HttpStatus.OK);
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
+    return null;
+  }
+
+
 
   /*--====================  Update   ====================--*/
 

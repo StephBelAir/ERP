@@ -1,5 +1,6 @@
 package com.erp.erp_back.repository;
 
+import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.model.Process;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +19,10 @@ public interface ProcessRepository extends JpaRepository<Process, Integer> {
 
   Process save(Process process);
 
+
   @Query("SELECT p FROM Process p WHERE processName = :processName")
   Process findByProcessName(String processName);
+
+  @Query("SELECT m FROM Machine m WHERE machine_name = :machineName")
+  Machine findByMachineName(String machineName);
 }

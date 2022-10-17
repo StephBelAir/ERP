@@ -33,6 +33,10 @@ public class Machine implements Serializable {
   public Machine() {
   }
 
+  public Machine(String machineName){
+    this.machineName = machineName;
+  }
+
   /**
    * @param productionTime
    * @param machineName

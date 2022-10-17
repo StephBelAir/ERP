@@ -18,8 +18,4 @@ public interface MachineRepository extends JpaRepository<Machine, Integer> {
 
   Machine deleteById(int id);
 
-  /*
-  @Query("SELECT m FROM Machine m WHERE machineName = :machineName")
-  Machine findByMachineName(String name);
-  * */
 }

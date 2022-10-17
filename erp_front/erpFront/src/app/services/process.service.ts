@@ -21,7 +21,7 @@ export class ProcessService {
     return this.httpClient.get <IProcess[]>(`${this.apiUrl}/processes`);
   }
 
-  patchProcess(machines:any){
-    return this.httpClient.patch<any>(`${this.apiUrl}/processes/addMachines`,machines)
+  patchProcess(machines:any[]){
+    return this.httpClient.patch<any[]>(`${this.apiUrl}/processes/addMachines`,machines)
   }
 }
