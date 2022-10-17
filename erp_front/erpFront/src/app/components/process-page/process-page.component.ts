@@ -5,6 +5,8 @@ import {ProcessService} from "../../services/process.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {ProcessAddMachinesDialogComponent} from "../process-add-machines-dialog/process-add-machines-dialog.component";
+
 
 @Component({
   selector: 'app-process-page',
@@ -30,6 +32,16 @@ export class ProcessPageComponent implements OnInit {
       width: '30%'
     }).afterClosed().subscribe(val=>{
       if (val === 'save'){
+        this.getAllProcess();
+      }
+    })
+  }
+
+  openAddDialog() {
+    this.dialog.open(ProcessAddMachinesDialogComponent, {
+      width: '30%'
+    }).afterClosed().subscribe(val=>{
+      if (val === 'saveMachine'){
         this.getAllProcess();
       }
     })

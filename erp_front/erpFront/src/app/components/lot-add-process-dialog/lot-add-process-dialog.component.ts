@@ -13,10 +13,10 @@ import {IProcess} from "../../interfaces/iprocess";
 })
 export class LotAddProcessDialogComponent implements OnInit {
 
-  addProcessForm !: FormGroup;
+  addProcessForm!: FormGroup;
   listProcess!: IProcess[];
 
-  constructor(private formBuilder : FormBuilder, private lotService : LotService, private processService : ProcessService,private dialogRef: MatDialogRef<LotAddProcessDialogComponent>) { }
+  constructor(private formBuilder : FormBuilder, private lotService : LotService, private processService : ProcessService, private dialogRef: MatDialogRef<LotAddProcessDialogComponent>) { }
 
   ngOnInit(): void {
     this.addProcessForm = this.formBuilder.group({

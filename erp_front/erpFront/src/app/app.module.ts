@@ -29,6 +29,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { LotAddProcessDialogComponent } from './components/lot-add-process-dialog/lot-add-process-dialog.component';
 import { LaunchPageComponent } from './components/launch-page/launch-page.component';
+import { ProcessAddMachinesDialogComponent } from './components/process-add-machines-dialog/process-add-machines-dialog.component';
 
 
 
@@ -46,7 +47,8 @@ import { LaunchPageComponent } from './components/launch-page/launch-page.compon
     ProcessDialogComponent,
     LotDialogComponent,
     LotAddProcessDialogComponent,
-    LaunchPageComponent
+    LaunchPageComponent,
+    ProcessAddMachinesDialogComponent
 
   ],
   imports: [

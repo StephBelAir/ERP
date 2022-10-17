@@ -1,0 +1,27 @@
+<h3 mat-dialog-title> Machine Binding to a Process</h3>
+
+<div mat-dialog-content>
+  <form [formGroup]="addMachineForm">
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Process Name</mat-label>
+    <mat-select formControlName="processName">
+      <mat-option *ngFor="let processName of listProcess" [value]="processName.processName">
+        {{processName.processName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Machine Name</mat-label>
+    <mat-select formControlName="machineName" multiple>
+      <mat-option *ngFor="let machineName of listMachine" [value]="machineName.machineName">
+        {{machineName.machineName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  </form>
+</div>
+
