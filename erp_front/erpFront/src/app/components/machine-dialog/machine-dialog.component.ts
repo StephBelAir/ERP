@@ -18,7 +18,7 @@ export class MachineDialogComponent implements OnInit {
     this.machineForm = this.formBuilder.group({
       productionTime : ['', Validators.required],
       machineType  : ['', Validators.required],
-      processOrder  : ['', Validators.required]
+      machineName : ['', Validators.required]
     })
   }
 
