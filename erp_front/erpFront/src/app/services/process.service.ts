@@ -20,4 +20,8 @@ export class ProcessService {
   getProcess(): Observable<IProcess[]>{
     return this.httpClient.get <IProcess[]>(`${this.apiUrl}/processes`);
   }
+
+  patchProcess(machines:any){
+    return this.httpClient.patch<any>(`${this.apiUrl}/processes/addMachines`,machines)
+  }
 }

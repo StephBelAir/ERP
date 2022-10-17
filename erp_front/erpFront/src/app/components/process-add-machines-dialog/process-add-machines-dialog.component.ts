@@ -4,6 +4,7 @@ import {ProcessService} from "../../services/process.service";
 import {MachineService} from "../../services/machine.service";
 import {IMachine} from "../../interfaces/imachine";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {MatDialogRef} from "@angular/material/dialog";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
 
 
 
-  constructor(private formBuilder : FormBuilder, private processService : ProcessService, private machineService : MachineService) { }
+  constructor(private formBuilder : FormBuilder, private processService : ProcessService, private machineService : MachineService, private dialogRef: MatDialogRef<ProcessAddMachinesDialogComponent>) { }
 
   ngOnInit(): void {
     this.addMachineForm = this.formBuilder.group({
@@ -28,6 +29,23 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
     })
     this.getAllProcess();
     this.getAllMachines();
+  }
+
+  addMachinesInProcess(){
+    console.log(this.addMachineForm.value)
+    if (this.addMachineForm.valid) {
+      this.processService.patchProcess(this.addMachineForm.value)
+        .subscribe({
+          next: (res) => {
+            alert("Machine added successfully");
+            this.addMachineForm.reset();
+            this.dialogRef.close('saveMachine');
+          },
+          error: () => {
+            alert("Error while adding the product")
+          }
+        })
+    }
   }
 
 
