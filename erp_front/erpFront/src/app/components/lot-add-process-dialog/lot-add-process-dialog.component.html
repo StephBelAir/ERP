@@ -7,11 +7,21 @@
       <mat-label>Lot's Serial Number</mat-label>
       <input formControlName="id" matInput type="number" placeholder="Lot">
     </mat-form-field>
-
+<!--
     <mat-form-field appearance="outline">
-      <mat-label>Process ID</mat-label>
-      <input formControlName="processId" matInput type="number" placeholder="Process ID">
-    </mat-form-field>
+      <mat-label>Process Name</mat-label>
+      <input formControlName="processName" matInput placeholder="Process Name">
+    </mat-form-field> -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>Process Name</mat-label>
+        <mat-select formControlName="processName">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let processName of listProcess" [value]="processName.processName">
+            {{processName.processName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
     </form>
   </div>
