@@ -1,13 +1,10 @@
 package com.erp.erp_back.service;
 
-import com.erp.erp_back.model.Lot;
-import com.erp.erp_back.model.Process;
-import com.erp.erp_back.repository.LotRepository;
-
 public class BindLotAndProcessService {
 
   private int id;
-  private int processId;
+
+  private String processName;
 
   public BindLotAndProcessService() {
   }
@@ -20,11 +17,12 @@ public class BindLotAndProcessService {
     this.id = id;
   }
 
-  public int getProcessId() {
-    return processId;
+  public String getProcessName() {
+    return processName;
   }
 
-  public void setProcessId(int processId) {
-    this.processId = processId;
+  public void setProcessName(String processName) {
+    this.processName = processName;
   }
+
 }
