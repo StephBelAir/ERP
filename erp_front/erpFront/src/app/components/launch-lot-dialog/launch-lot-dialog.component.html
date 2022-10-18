@@ -3,29 +3,27 @@
   <div mat-dialog-content>
     <form [formGroup]="launchLotForm">
 
-    <mat-form-field appearance="fill">
-      <mat-label>Lot Serial Number</mat-label>
-      <mat-select formControlName="id">
-        <mat-option *ngFor="let lotNumber of listLot" [value]="lotNumber.id">
-          {{lotNumber.id}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Lot Serial Number</mat-label>
+        <mat-select formControlName="id">
+          <mat-option *ngFor="let lotNumber of listLot" [value]="lotNumber.id">
+            {{lotNumber.id}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
 
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Enter StartDate and EndDate</mat-label>
         <mat-date-range-input [formGroup]="launchLotForm" [rangePicker]="picker">
           <input matStartDate formControlName="startDate" placeholder="Start date">
           <input matEndDate formControlName="endDate" placeholder="End date">
         </mat-date-range-input>
-        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
 
-        </mat-form-field>
-
-      <p>Selected range: {{launchLotForm.value.startDate | date: "dd/MM/YY" }} - {{launchLotForm.value.endDate  | date: "dd/MM/YY"  }}</p>
+      <p>Selected range: <br> {{launchLotForm.value.startDate | date: "dd/MM/YYYY" }} - {{launchLotForm.value.endDate  | date: "dd/MM/YYYY"  }}</p>
 
 
     </form>

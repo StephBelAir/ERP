@@ -27,7 +27,7 @@ export class LotService {
   }
 
   patchLot(lot : any){
-    return console.log("COOOOOOOOOOOOOOPAIN :p")
+    return this.httpClient.patch<any>(`${this.apiUrl}/lot/launchLot`,lot)
   }
 
   /*

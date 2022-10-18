@@ -42,7 +42,7 @@ export class LaunchLotDialogComponent implements OnInit {
 
   launchLot() {
     console.log(this.launchLotForm.value)
-/*     if (this.launchLotForm.valid) {
+     if (this.launchLotForm.valid) {
       this.lotService.patchLot(this.launchLotForm.value)
         .subscribe({
           next: (res) => {
@@ -55,7 +55,6 @@ export class LaunchLotDialogComponent implements OnInit {
           }
         })
     }
-    */
 
     /*
     this.startLot = this.range.value.start
