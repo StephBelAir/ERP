@@ -4,6 +4,7 @@ import {LotService} from "../../services/lot.service";
 import {ProcessService} from "../../services/process.service";
 import {MatDialogRef} from "@angular/material/dialog"
 import {IProcess} from "../../interfaces/iprocess";
+import {ILot} from "../../interfaces/ilot";
 
 
 @Component({
@@ -13,8 +14,9 @@ import {IProcess} from "../../interfaces/iprocess";
 })
 export class LotAddProcessDialogComponent implements OnInit {
 
-  addProcessForm!: FormGroup;
   listProcess!: IProcess[];
+  listLot!: ILot[];
+  addProcessForm!: FormGroup;
 
   constructor(private formBuilder : FormBuilder,
               private lotService : LotService,
@@ -27,6 +29,7 @@ export class LotAddProcessDialogComponent implements OnInit {
       processName : ['',Validators.required]
     })
     this.getAllProcess()
+    this.getAllLots()
   }
 
   addProcessInLot(){
@@ -53,6 +56,20 @@ export class LotAddProcessDialogComponent implements OnInit {
           console.log(res);
           this.listProcess = res
           console.log("Process Loaded", this.listProcess)
+        },
+        error: (err) => {
+          alert("Error while fetching the Records !!")
+        }
+      })
+  }
+
+  getAllLots() {
+    this.lotService.getLot()
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.listLot = res
+          console.log("Process Loaded", this.listLot)
         },
         error: (err) => {
           alert("Error while fetching the Records !!")
