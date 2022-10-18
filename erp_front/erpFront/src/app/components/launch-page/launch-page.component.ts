@@ -40,7 +40,7 @@ export class LaunchPageComponent implements OnInit {
     this.dialog.open(EndLotDialogComponent, {
       width: '30%'
     }).afterClosed().subscribe(val=>{
-      if (val === 'saveEnd'){
+      if (val === 'saveEndLot'){
          this.getAllLots();
       }
     })

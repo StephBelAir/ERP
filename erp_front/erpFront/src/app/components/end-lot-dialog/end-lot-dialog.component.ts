@@ -33,7 +33,7 @@ export class EndLotDialogComponent implements OnInit {
           next: (res) => {
             alert("Machine added successfully");
             this.endLotForm.reset();
-            this.dialogRef.close('saveProcess');
+            this.dialogRef.close('saveEndLot');
           },
           error: () => {
             alert("Error while adding the product")

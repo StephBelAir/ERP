@@ -36,7 +36,7 @@ export class LaunchLotDialogComponent implements OnInit {
           next: (res) => {
             alert("Machine added successfully");
             this.launchLotForm.reset();
-            this.dialogRef.close('saveProcess');
+            this.dialogRef.close('save');
           },
           error: () => {
             alert("Error while adding the product")
