@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LaunchLotDialogComponent} from "../launch-lot-dialog/launch-lot-dialog.component";
 import {EndLotDialogComponent} from "../end-lot-dialog/end-lot-dialog.component";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
+import {LotService} from "../../services/lot.service";
 
 @Component({
   selector: 'app-launch-page',
@@ -10,9 +14,16 @@ import {EndLotDialogComponent} from "../end-lot-dialog/end-lot-dialog.component"
 })
 export class LaunchPageComponent implements OnInit {
 
-  constructor(private dialog : MatDialog) { }
+  displayedColumns: string[] = ['id', 'productName', 'width', 'startDate', 'endDate', 'actualEndDate'];
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private dialog : MatDialog, private lotService : LotService) { }
 
   ngOnInit(): void {
+    this.getAllLots()
   }
 
   openDialog() {
@@ -29,10 +40,34 @@ export class LaunchPageComponent implements OnInit {
     this.dialog.open(EndLotDialogComponent, {
       width: '30%'
     }).afterClosed().subscribe(val=>{
-      if (val === 'save'){
+      if (val === 'saveEnd'){
         // this.getAllProcess();
       }
     })
+  }
+
+  getAllLots() {
+    this.lotService.getLot()
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.dataSource = new MatTableDataSource<any>(res);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort
+        },
+        error: (err) => {
+          alert("Error while fetching the Records !!")
+        }
+      })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }
