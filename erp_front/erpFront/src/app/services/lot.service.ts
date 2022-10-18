@@ -33,11 +33,4 @@ export class LotService {
   patchEndLot(lot : any){
     return this.httpClient.patch<any>(`${this.apiUrl}/lot/endLot`,lot)
   }
-
-  /*
-  patchLot(lotId: Number, startLot: Date, endLot: Date) {
-    const resultStart = this.httpClient.patch(`${this.apiUrl}/lot/patch/startDate`, startLot)
-    const resultEnd = this.httpClient.patch(`${this.apiUrl}/lot/patch/endDate`, endLot)
-    return `${resultStart} - ${resultEnd}`;
-  }*/
 }

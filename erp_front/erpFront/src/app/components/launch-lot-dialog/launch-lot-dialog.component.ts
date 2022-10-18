@@ -15,18 +15,6 @@ export class LaunchLotDialogComponent implements OnInit {
   listLot!: ILot[];
   launchLotForm!: FormGroup;
 
-  /*
-  startLot!: Date;
-  endLot!: Date;
-  lotId: Number = 0;
-
-  range = new FormGroup({
-    lotNumber: new FormControl(null),
-    start: new FormControl(null),
-    end: new FormControl(null),
-  })*/
-
-
   constructor(private formBuilder: FormBuilder,
               private lotService: LotService,
               private dialogRef: MatDialogRef<LaunchLotDialogComponent> ) { }
@@ -55,11 +43,6 @@ export class LaunchLotDialogComponent implements OnInit {
           }
         })
     }
-
-    /*
-    this.startLot = this.range.value.start
-    this.endLot = this.range.value.end
-    this.lotService.patchLot(this.lotId, this.startLot, this.endLot) */
   }
 
   getAllLots() {
