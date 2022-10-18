@@ -223,6 +223,47 @@ public class LotController {
     return null;
   }
 
+  /*--====================  Patch Ajoute DES dates dans UN lot   ====================--*/
+
+  @ApiOperation(value = "Ajoute DES Start et End dates dans UN lot By requestBody")
+  @PatchMapping(value = "/lot/launchLot")
+  @ResponseBody
+  public ResponseEntity<Lot> patchlaunchLot(
+      @RequestBody Lot updateLot) throws Exception {
+    try {
+      Lot lot = this.lotRepository.findById(updateLot.getId());
+      Process process = lot.getProcess();
+      lot.setProcess(process);
+      lot.setStartDate(updateLot.getStartDate());
+      lot.setEndDate(updateLot.getEndDate());
+      lotRepository.save(lot);
+      return new ResponseEntity<>(lot, HttpStatus.OK);
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
+    return null;
+  }
+
+  /*--====================  Patch Ajoute UNE endDates dans UN lot   ====================--*/
+
+  @ApiOperation(value = "Ajoute DES Start et End dates dans UN lot By requestBody")
+  @PatchMapping(value = "/lot/endLot")
+  @ResponseBody
+  public ResponseEntity<Lot> patchActualEndLot(
+      @RequestBody Lot updateLot) throws Exception {
+    try {
+      Lot lot = this.lotRepository.findById(updateLot.getId());
+      Process process = lot.getProcess();
+      lot.setProcess(process);
+      lot.setActualEndDate(updateLot.getActualEndDate());
+      lotRepository.save(lot);
+      return new ResponseEntity<>(lot, HttpStatus.OK);
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
+    return null;
+  }
+
 
 
   /*--====================  Patch Mise en Production pour StartDate & EndDate   ====================--*/
