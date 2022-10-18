@@ -25,4 +25,15 @@ export class LotService {
   addProcess(lot : any){
     return this.httpClient.patch<any>(`${this.apiUrl}/lot/addProcess`,lot)
   }
+
+  patchLot(lot : any){
+    return console.log("COOOOOOOOOOOOOOPAIN :p")
+  }
+
+  /*
+  patchLot(lotId: Number, startLot: Date, endLot: Date) {
+    const resultStart = this.httpClient.patch(`${this.apiUrl}/lot/patch/startDate`, startLot)
+    const resultEnd = this.httpClient.patch(`${this.apiUrl}/lot/patch/endDate`, endLot)
+    return `${resultStart} - ${resultEnd}`;
+  }*/
 }
