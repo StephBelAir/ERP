@@ -14,7 +14,7 @@ import {LotService} from "../../services/lot.service";
 })
 export class LaunchPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'productName', 'width', 'startDate', 'endDate', 'actualEndDate'];
+  displayedColumns: string[] = ['id', 'productName', 'width', 'startDate', 'endDate', 'estimateEndDate', 'actualEndDate'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -31,7 +31,7 @@ export class LaunchPageComponent implements OnInit {
       width: '30%'
     }).afterClosed().subscribe(val=>{
       if (val === 'save'){
-       // this.getAllProcess();
+        this.getAllLots();
       }
     })
   }
@@ -41,7 +41,7 @@ export class LaunchPageComponent implements OnInit {
       width: '30%'
     }).afterClosed().subscribe(val=>{
       if (val === 'saveEnd'){
-        // this.getAllProcess();
+         this.getAllLots();
       }
     })
   }

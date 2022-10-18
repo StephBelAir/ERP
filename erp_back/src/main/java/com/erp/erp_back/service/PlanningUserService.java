@@ -20,6 +20,8 @@ public class PlanningUserService {
   protected LocalDateTime endDate;
   protected LocalDateTime actualEndDate;
 
+  protected LocalDateTime estimateEndDate;
+
 
   public PlanningUserService() {
   }
@@ -38,6 +40,7 @@ public class PlanningUserService {
     result.setStartDate(orignal.getStartDate());
     result.setEndDate(orignal.getEndDate());
     result.setActualEndDate(orignal.getActualEndDate());
+    result.setEstimateEndDate(orignal.getEstimateEndDate());
 
     return result;
   }
@@ -88,5 +91,13 @@ public class PlanningUserService {
 
   public void setActualEndDate(LocalDateTime actualEndDate) {
     this.actualEndDate = actualEndDate;
+  }
+
+  public LocalDateTime getEstimateEndDate() {
+    return estimateEndDate;
+  }
+
+  public void setEstimateEndDate(LocalDateTime estimateEndDate) {
+    this.estimateEndDate = estimateEndDate;
   }
 }
