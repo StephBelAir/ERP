@@ -31,6 +31,7 @@ import {LotAddProcessDialogComponent} from './components/lot-add-process-dialog/
 import {LaunchPageComponent} from './components/launch-page/launch-page.component';
 import {ProcessAddMachinesDialogComponent} from './components/process-add-machines-dialog/process-add-machines-dialog.component';
 import {LaunchLotDialogComponent} from './components/launch-lot-dialog/launch-lot-dialog.component';
+import { EndLotDialogComponent } from './components/end-lot-dialog/end-lot-dialog.component';
 
 
 const material = [
@@ -62,7 +63,8 @@ const material = [
     LotAddProcessDialogComponent,
     LaunchPageComponent,
     ProcessAddMachinesDialogComponent,
-    LaunchLotDialogComponent
+    LaunchLotDialogComponent,
+    EndLotDialogComponent
   ],
   imports: [
     BrowserModule,

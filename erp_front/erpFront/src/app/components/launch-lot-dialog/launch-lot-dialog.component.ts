@@ -29,7 +29,7 @@ export class LaunchLotDialogComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private lotService: LotService,
-              private dialogRef: MatDialogRef<LaunchLotDialogComponent>) { }
+              private dialogRef: MatDialogRef<LaunchLotDialogComponent> ) { }
 
   ngOnInit(): void {
     this.launchLotForm = this.formBuilder.group({

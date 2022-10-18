@@ -1,0 +1,31 @@
+<h3 mat-dialog-title>Lancement de lot en Prod</h3>
+
+<div mat-dialog-content>
+  <form [formGroup]="endLotForm">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Lot Serial Number</mat-label>
+      <mat-select formControlName="id">
+        <mat-option *ngFor="let lotNumber of listLot" [value]="lotNumber.id">
+          {{lotNumber.id}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a EndDate</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="actualEndDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <p>Selected End Date : <br> {{endLotForm.value.actualEndDate | date: "dd/MM/YYYY" }}</p>
+
+
+  </form>
+</div>
+
+<div mat-dialog-action [align]="'end'">
+  <button mat-stroked-button color="basic" (click)="endLot()" >Save</button>
+  <button style="margin-left: 8px;" mat-stroked-button color="warn" mat-dialog-close>Close X </button>
+</div>
