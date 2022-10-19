@@ -6,18 +6,18 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Process Name</mat-label>
-    <mat-select formControlName="processName">
-      <mat-option *ngFor="let processName of listProcess" [value]="processName.processName">
-        {{processName.processName}}
+    <mat-select formControlName="processId">
+      <mat-option *ngFor="let processId of listProcess" [value]="processId.processId">
+        id : {{processId.processId}} -  Name : {{processId.processName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Machine Name</mat-label>
-    <mat-select formControlName="machineName" multiple>
-      <mat-option *ngFor="let machineName of listMachine" [value]="machineName.machineName">
-        {{machineName.machineName}}
+    <mat-select formControlName="machineId" multiple>
+      <mat-option *ngFor="let machineId of listMachine" [value]="machineId.machineId">
+        id : {{machineId.machineId}} -  Name : {{machineId.machineName}}
       </mat-option>
     </mat-select>
   </mat-form-field>

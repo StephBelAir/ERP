@@ -25,4 +25,9 @@ public interface ProcessRepository extends JpaRepository<Process, Integer> {
 
   @Query("SELECT m FROM Machine m WHERE machine_name = :machineName")
   Machine findByMachineName(String machineName);
+
+  @Query("SELECT i FROM Machine i WHERE machine_id = :machineId")
+  Machine findByMachineId(int machineId);
+
+
 }

@@ -24,8 +24,8 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.addMachineForm = this.formBuilder.group({
-      processName : ['',Validators.required],
-      machineName : ['',Validators.required]
+      processId : ['',Validators.required],
+      machineId : ['',Validators.required]
     })
     this.getAllProcess();
     this.getAllMachines();

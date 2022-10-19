@@ -33,6 +33,10 @@ public class Machine implements Serializable {
   public Machine() {
   }
 
+  public Machine(int machineId) {
+    this.machineId = machineId;
+  }
+
   public Machine(String machineName){
     this.machineName = machineName;
   }

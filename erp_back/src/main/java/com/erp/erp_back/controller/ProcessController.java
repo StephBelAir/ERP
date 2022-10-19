@@ -143,7 +143,7 @@ public class ProcessController {
   }
 
   /*--====================  Patch Ajouter DES machines dans UN process   ====================--*/
-
+/*
   @ApiOperation(value = "Ajoute DES machines dans UN process")
   @PatchMapping(value = "/processes/addMachines")
   @ResponseBody
@@ -158,6 +158,30 @@ public class ProcessController {
         machineName.add(m);
       }
       process.setMachine(machineName);
+      processRepository.save(process);
+      return new ResponseEntity<>(process, HttpStatus.OK);
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
+    return null;
+  }*/
+
+  /*--====================  Patch Ajouter DES machines ID dans UN process ID  ====================--*/
+
+  @ApiOperation(value = "Ajoute DES machines ID dans UN process")
+  @PatchMapping(value = "/processes/addMachinesid")
+  @ResponseBody
+  public ResponseEntity<Process> patchAddMachinesIdInProcess(
+      @RequestBody BindProcessAndMachinesService updateProcess) throws Exception {
+    try {
+      Process process = this.processRepository.findById(updateProcess.getProcessId());
+      List<Machine> machineId = new ArrayList<Machine>();
+      for (int i = 0; i < updateProcess.getMachineList().size(); i++) {
+        int id = updateProcess.getMachineList().get(i).getMachineId();
+        Machine m = this.processRepository.findByMachineId(id);
+        machineId.add(m);
+      }
+      process.setMachine(machineId);
       processRepository.save(process);
       return new ResponseEntity<>(process, HttpStatus.OK);
     } catch (Exception ex) {

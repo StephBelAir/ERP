@@ -8,23 +8,23 @@ public class BindProcessAndMachinesService {
 
 
 
-  private String processName;
-  private List<Machine> machineName;
+  private int processId;
+  private List<Machine> machineId;
 
-  public String getProcessName() {
-    return processName;
+  public int getProcessId() {
+    return processId;
   }
 
-  public void setProcessName(String processName) {
-    this.processName = processName;
+  public void setProcessId(int processId) {
+    this.processId = processId;
   }
 
-  public void setMachineName(List<Machine> machineName) {
-    this.machineName = machineName;
+  public void setMachineId(List<Machine> machineId) {
+    this.machineId = machineId;
   }
 
   public List<Machine> getMachineList() {
-    return machineName;
+    return machineId;
   }
 /*
   public void setMachineName(String machineName) {
