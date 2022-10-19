@@ -213,7 +213,7 @@ public class LotController {
       @RequestBody BindLotAndProcessService updateLot) throws Exception {
     try {
       Lot lot = this.lotRepository.findById(updateLot.getId());
-      Process process = this.processRepository.findByProcessName(updateLot.getProcessName());
+      Process process = this.processRepository.findByProcessId(updateLot.getId());
       lot.setProcess(process);
       lotRepository.save(lot);
       return new ResponseEntity<>(lot, HttpStatus.OK);

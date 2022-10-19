@@ -46,7 +46,9 @@ public class Process implements Serializable {
     return ProcessTimeForOneParts;
   }
 
-
+  public Process(int processId) {
+    this.processId = processId;
+  }
 
   /**
    * @param processName

@@ -26,7 +26,7 @@ export class LotAddProcessDialogComponent implements OnInit {
   ngOnInit(): void {
     this.addProcessForm = this.formBuilder.group({
       id : ['',Validators.required],
-      processName : ['',Validators.required]
+      processId : ['',Validators.required]
     })
     this.getAllProcess()
     this.getAllLots()
@@ -38,7 +38,7 @@ export class LotAddProcessDialogComponent implements OnInit {
       this.lotService.addProcess(this.addProcessForm.value)
         .subscribe({
           next: (res) => {
-            alert("Machine added successfully");
+            alert("Process added successfully");
             this.addProcessForm.reset();
             this.dialogRef.close('saveProcess');
           },

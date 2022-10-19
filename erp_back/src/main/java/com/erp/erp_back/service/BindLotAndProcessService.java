@@ -4,7 +4,7 @@ public class BindLotAndProcessService {
 
   private int id;
 
-  private String processName;
+  private int processId;
 
   public BindLotAndProcessService() {
   }
@@ -17,12 +17,12 @@ public class BindLotAndProcessService {
     this.id = id;
   }
 
-  public String getProcessName() {
-    return processName;
+  public int getProcessName() {
+    return processId;
   }
 
-  public void setProcessName(String processName) {
-    this.processName = processName;
+  public void setProcessName(int processName) {
+    this.processId = processId;
   }
 
 }

@@ -14,9 +14,9 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Process Name</mat-label>
-      <mat-select formControlName="processName">
-        <mat-option *ngFor="let processName of listProcess" [value]="processName.processName">
-          {{processName.processName}}
+      <mat-select formControlName="processId">
+        <mat-option *ngFor="let processName of listProcess" [value]="processName.processId">
+          id : {{processName.processId}} -  Name :  {{processName.processName}}
         </mat-option>
       </mat-select>
     </mat-form-field>
