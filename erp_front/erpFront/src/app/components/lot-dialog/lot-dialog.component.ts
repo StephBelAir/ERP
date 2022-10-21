@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LotService} from "../../services/lot.service";
 import {MatDialogRef} from "@angular/material/dialog"
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -31,12 +33,12 @@ export class LotDialogComponent implements OnInit {
       this.lotService.postLot(this.lotForm.value)
         .subscribe({
           next: (res) => {
-            alert("Machine added successfully");
+            Swal.fire("Machine added successfully");
             this.lotForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            alert("Error while adding the product")
+            Swal.fire("Error while adding the product")
           }
         })
     }

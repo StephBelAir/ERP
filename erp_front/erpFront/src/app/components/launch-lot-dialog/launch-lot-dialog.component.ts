@@ -3,6 +3,7 @@ import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {LotService} from "../../services/lot.service";
 import {ILot} from "../../interfaces/ilot";
 import {MatDialogRef} from "@angular/material/dialog";
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -28,21 +29,24 @@ export class LaunchLotDialogComponent implements OnInit {
     this.getAllLots()
   }
 
+
+
   launchLot() {
     console.log(this.launchLotForm.value)
      if (this.launchLotForm.valid) {
       this.lotService.patchLot(this.launchLotForm.value)
         .subscribe({
           next: (res) => {
-            alert("Machine added successfully");
+            Swal.fire("Machine added successfully");
             this.launchLotForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            alert("Error while adding the product")
+            Swal.fire("Error while adding the product")
           }
         })
     }
+
   }
 
   getAllLots() {
@@ -54,9 +58,10 @@ export class LaunchLotDialogComponent implements OnInit {
           console.log("Process Loaded", this.listLot)
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }
+
 
 }

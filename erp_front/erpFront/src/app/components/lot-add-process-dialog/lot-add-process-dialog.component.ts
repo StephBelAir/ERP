@@ -5,6 +5,7 @@ import {ProcessService} from "../../services/process.service";
 import {MatDialogRef} from "@angular/material/dialog"
 import {IProcess} from "../../interfaces/iprocess";
 import {ILot} from "../../interfaces/ilot";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -38,12 +39,12 @@ export class LotAddProcessDialogComponent implements OnInit {
       this.lotService.addProcess(this.addProcessForm.value)
         .subscribe({
           next: (res) => {
-            alert("Process added successfully");
+            Swal.fire("Process added successfully");
             this.addProcessForm.reset();
             this.dialogRef.close('saveProcess');
           },
           error: () => {
-            alert("Error while adding the product")
+            Swal.fire("Error while adding the product")
           }
         })
     }
@@ -58,7 +59,7 @@ export class LotAddProcessDialogComponent implements OnInit {
           console.log("Process Loaded", this.listProcess)
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }
@@ -72,7 +73,7 @@ export class LotAddProcessDialogComponent implements OnInit {
           console.log("Process Loaded", this.listLot)
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }

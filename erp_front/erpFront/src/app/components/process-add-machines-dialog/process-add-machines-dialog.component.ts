@@ -5,6 +5,7 @@ import {MachineService} from "../../services/machine.service";
 import {IMachine} from "../../interfaces/imachine";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -37,12 +38,12 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
       this.processService.patchProcess(this.addMachineForm.value)
         .subscribe({
           next: (res) => {
-            alert("Machine added successfully");
+            Swal.fire("Machine added successfully");
             this.addMachineForm.reset();
             this.dialogRef.close('saveMachine');
           },
           error: () => {
-            alert("Error while adding the product")
+            Swal.fire("Error while adding the product")
           }
         })
     }
@@ -58,7 +59,7 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
           console.log("Process Loaded", this.listProcess)
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }
@@ -72,7 +73,7 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
           console.log("Machine Loaded", this.listMachine)
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }

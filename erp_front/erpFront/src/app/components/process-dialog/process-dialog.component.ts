@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog"
 import {ProcessService} from "../../services/process.service";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -27,12 +28,12 @@ export class ProcessDialogComponent implements OnInit {
       this.processService.postProcess(this.processForm.value)
         .subscribe({
           next: (res) => {
-            alert("Process added successfully");
+            Swal.fire("Process added successfully");
             this.processForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            alert("Error while adding the Process")
+            Swal.fire("Error while adding the Process")
           }
         })
     }

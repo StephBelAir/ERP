@@ -6,6 +6,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {LotService} from "../../services/lot.service";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-launch-page',
@@ -56,7 +58,7 @@ export class LaunchPageComponent implements OnInit {
           this.dataSource.sort = this.sort
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }

@@ -6,6 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ProcessAddMachinesDialogComponent} from "../process-add-machines-dialog/process-add-machines-dialog.component";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -57,7 +58,7 @@ export class ProcessPageComponent implements OnInit {
           this.dataSource.sort = this.sort
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }

@@ -3,6 +3,8 @@ import {ILot} from "../../interfaces/ilot";
 import {LotService} from "../../services/lot.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-end-lot-dialog',
@@ -31,12 +33,12 @@ export class EndLotDialogComponent implements OnInit {
       this.lotService.patchEndLot(this.endLotForm.value)
         .subscribe({
           next: (res) => {
-            alert("Machine added successfully");
+            Swal.fire("Machine added successfully");
             this.endLotForm.reset();
             this.dialogRef.close('saveEndLot');
           },
           error: () => {
-            alert("Error while adding the product")
+            Swal.fire("Error while adding the product")
           }
         })
     }
@@ -51,7 +53,7 @@ export class EndLotDialogComponent implements OnInit {
           console.log("Process Loaded", this.listLot)
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }

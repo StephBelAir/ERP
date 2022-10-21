@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {MachineService} from "../../services/machine.service";
 import {MatDialogRef} from "@angular/material/dialog"
-import {MatTableDataSource} from "@angular/material/table";
 import {IMachine} from "../../interfaces/imachine";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-machine-dialog',
@@ -31,12 +31,12 @@ export class MachineDialogComponent implements OnInit {
         this.machineService.postMachine(this.machineForm.value)
           .subscribe({
             next: (res) => {
-              alert("Machine added successfully");
+              Swal.fire("Machine added successfully");
               this.machineForm.reset();
               this.dialogRef.close('save');
             },
             error: () => {
-              alert("Error while adding the product")
+              Swal.fire("Error while adding the product")
             }
           })
       }
@@ -51,7 +51,7 @@ export class MachineDialogComponent implements OnInit {
           console.log("Machine Loaded", this.listMachine)
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
+          Swal.fire("Error while fetching the Records !!")
         }
       })
   }
