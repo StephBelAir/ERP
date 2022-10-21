@@ -232,12 +232,16 @@ public class LotController {
       @RequestBody Lot updateLot) throws Exception {
     try {
       Lot lot = this.lotRepository.findById(updateLot.getId());
-      Process process = lot.getProcess();
-      lot.setProcess(process);
-      lot.setStartDate(updateLot.getStartDate());
-      lot.setEndDate(updateLot.getEndDate());
-      lotRepository.save(lot);
-      return new ResponseEntity<>(lot, HttpStatus.OK);
+      if (lot.getProcess() != null) {
+        Process process = lot.getProcess();
+        lot.setProcess(process);
+        lot.setStartDate(updateLot.getStartDate());
+        lot.setEndDate(updateLot.getEndDate());
+        lotRepository.save(lot);
+        return new ResponseEntity<>(lot, HttpStatus.OK);
+      } else {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+      }
     } catch (Exception ex) {
       System.out.println(ex);
     }
