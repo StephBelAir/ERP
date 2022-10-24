@@ -33,13 +33,14 @@ export class LotDialogComponent implements OnInit {
       this.lotService.postLot(this.lotForm.value)
         .subscribe({
           next: (res) => {
-            Swal.fire("Machine added successfully");
+            Swal.fire({ title:"Lot added successfully",
+              icon: "success"});
             this.lotForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            Swal.fire("Error while adding the product")
-          }
+            Swal.fire({ title:"Error while fetching the Records !!",
+              icon: "error",})          }
         })
     }
   }

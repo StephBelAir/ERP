@@ -28,12 +28,14 @@ export class ProcessDialogComponent implements OnInit {
       this.processService.postProcess(this.processForm.value)
         .subscribe({
           next: (res) => {
-            Swal.fire("Process added successfully");
+            Swal.fire({ title:"Process added successfully",
+              icon: "success"});
             this.processForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            Swal.fire("Error while adding the Process")
+            Swal.fire({ title:"Error while fetching the Records !!",
+              icon: "error",})
           }
         })
     }

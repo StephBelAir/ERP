@@ -47,7 +47,8 @@ export class MachinePageComponent implements OnInit {
           this.dataSource.sort = this.sort
         },
         error: (err) => {
-          Swal.fire("Error while fetching the Records !!")
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})
         }
       })
   }

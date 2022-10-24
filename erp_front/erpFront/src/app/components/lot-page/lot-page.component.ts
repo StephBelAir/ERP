@@ -6,6 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {LotAddProcessDialogComponent} from "../lot-add-process-dialog/lot-add-process-dialog.component";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-lot-page',
@@ -56,8 +57,8 @@ export class LotPageComponent implements OnInit {
           this.dataSource.sort = this.sort
         },
         error: (err) => {
-          alert("Error while fetching the Records !!")
-        }
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})        }
       })
   }
 

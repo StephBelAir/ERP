@@ -31,12 +31,14 @@ export class MachineDialogComponent implements OnInit {
         this.machineService.postMachine(this.machineForm.value)
           .subscribe({
             next: (res) => {
-              Swal.fire("Machine added successfully");
+              Swal.fire({ title:"Machine added successfully",
+              icon: "success"});
               this.machineForm.reset();
               this.dialogRef.close('save');
             },
             error: () => {
-              Swal.fire("Error while adding the product")
+              Swal.fire({ title:"Error while fetching the Records !!",
+                icon: "error",})
             }
           })
       }
@@ -51,7 +53,8 @@ export class MachineDialogComponent implements OnInit {
           console.log("Machine Loaded", this.listMachine)
         },
         error: (err) => {
-          Swal.fire("Error while fetching the Records !!")
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})
         }
       })
   }

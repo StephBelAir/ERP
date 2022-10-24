@@ -39,12 +39,14 @@ export class LotAddProcessDialogComponent implements OnInit {
       this.lotService.addProcess(this.addProcessForm.value)
         .subscribe({
           next: (res) => {
-            Swal.fire("Process added successfully");
+            Swal.fire({ title:"Process added successfully",
+              icon: "success"});
             this.addProcessForm.reset();
             this.dialogRef.close('saveProcess');
           },
           error: () => {
-            Swal.fire("Error while adding the product")
+            Swal.fire({ title:"Error while fetching the Records !!",
+              icon: "error",})
           }
         })
     }
@@ -59,7 +61,8 @@ export class LotAddProcessDialogComponent implements OnInit {
           console.log("Process Loaded", this.listProcess)
         },
         error: (err) => {
-          Swal.fire("Error while fetching the Records !!")
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})
         }
       })
   }
@@ -73,7 +76,8 @@ export class LotAddProcessDialogComponent implements OnInit {
           console.log("Process Loaded", this.listLot)
         },
         error: (err) => {
-          Swal.fire("Error while fetching the Records !!")
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})
         }
       })
   }

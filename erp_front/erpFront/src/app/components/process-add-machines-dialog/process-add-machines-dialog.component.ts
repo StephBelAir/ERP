@@ -38,12 +38,14 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
       this.processService.patchProcess(this.addMachineForm.value)
         .subscribe({
           next: (res) => {
-            Swal.fire("Machine added successfully");
+            Swal.fire({ title:"Machine added successfully",
+              icon: "success"});
             this.addMachineForm.reset();
             this.dialogRef.close('saveMachine');
           },
           error: () => {
-            Swal.fire("Error while adding the product")
+            Swal.fire({ title:"Error while fetching the Records !!",
+              icon: "error",})
           }
         })
     }
@@ -59,7 +61,8 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
           console.log("Process Loaded", this.listProcess)
         },
         error: (err) => {
-          Swal.fire("Error while fetching the Records !!")
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})
         }
       })
   }
@@ -73,7 +76,8 @@ export class ProcessAddMachinesDialogComponent implements OnInit {
           console.log("Machine Loaded", this.listMachine)
         },
         error: (err) => {
-          Swal.fire("Error while fetching the Records !!")
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})
         }
       })
   }

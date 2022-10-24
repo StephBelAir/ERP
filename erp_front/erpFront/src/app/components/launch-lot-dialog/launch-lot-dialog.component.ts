@@ -37,12 +37,14 @@ export class LaunchLotDialogComponent implements OnInit {
       this.lotService.patchLot(this.launchLotForm.value)
         .subscribe({
           next: (res) => {
-            Swal.fire("Machine added successfully");
+            Swal.fire({ title:"Start & End Dates added successfully",
+              icon: "success"});
             this.launchLotForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            Swal.fire("Error while adding the product")
+            Swal.fire({ title:"Error while adding the Start & End Dates",
+              icon: "error"});
           }
         })
     }
@@ -58,7 +60,8 @@ export class LaunchLotDialogComponent implements OnInit {
           console.log("Process Loaded", this.listLot)
         },
         error: (err) => {
-          Swal.fire("Error while fetching the Records !!")
+          Swal.fire({ title:"Error while fetching the Records !!",
+            icon: "error",})
         }
       })
   }
