@@ -18,8 +18,8 @@ export class LotService {
     return this.httpClient.post<any>(`${this.apiUrl}/lots/add`,lot)
   }
 
-  getLot(): Observable<ILot[]>{
-    return this.httpClient.get <ILot[]>(`${this.apiUrl}/lots`);
+  getLot(): Observable<any>{
+    return this.httpClient.get <any>(`${this.apiUrl}/lots`);
   }
 
   addProcess(lot : any){

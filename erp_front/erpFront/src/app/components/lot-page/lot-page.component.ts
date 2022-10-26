@@ -15,8 +15,9 @@ import Swal from "sweetalert2";
 })
 export class LotPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'productName', 'width', 'quantity', 'length', 'type' ];
+  displayedColumns: string[] = ['id', 'productName', 'width', 'processName', 'quantity', 'length', 'type' ];
   dataSource!: MatTableDataSource<any>;
+  proc!: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -51,10 +52,15 @@ export class LotPageComponent implements OnInit {
     this.lotService.getLot()
       .subscribe({
         next: (res) => {
-          // console.log(res);
-          this.dataSource = new MatTableDataSource<any>(res);
+          //console.log(res);
+//          let proc: any = {};
+//          proc.processName = res.process.processName;
+          //this.dataSource = new MatTableDataSource(pro);
+          this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort
+          console.log(res)
+
         },
         error: (err) => {
           Swal.fire({ title:"Error while fetching the Records !!",
