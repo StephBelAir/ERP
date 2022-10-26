@@ -4,8 +4,6 @@ import com.erp.erp_back.model.Machine;
 import com.erp.erp_back.repository.MachineRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 // = DTO
 
 /**
@@ -18,7 +16,7 @@ public class MachineService {
 
   protected int machineId;
   protected int productionTime;
-  protected String processOrder;
+  protected String machineName;
   protected String machineType;
 
   static MachineRepository machineRepository;
@@ -42,12 +40,12 @@ public class MachineService {
     this.productionTime = productionTime;
   }
 
-  public String getProcessOrder() {
-    return processOrder;
+  public String getMachineName() {
+    return machineName;
   }
 
-  public void setProcessOrder(String processOrder) {
-    this.processOrder = processOrder;
+  public void setMachineName(String machineName) {
+    this.machineName = machineName;
   }
 
   public String getMachineType() {
@@ -78,7 +76,7 @@ public class MachineService {
    */
   public static Machine addMachine(MachineService machineService) {
     Machine machine =
-        new Machine(machineService.getProductionTime(), machineService.getProcessOrder(),
+        new Machine(machineService.getProductionTime(), machineService.getMachineName(),
             machineService.getMachineType());
     return machine;
   }
@@ -89,7 +87,7 @@ public class MachineService {
    */
   public static Machine editMachine(MachineService machineService) {
     Machine machine = new Machine(machineService.getMachineId(), machineService.getProductionTime(),
-        machineService.getProcessOrder(), machineService.getMachineType());
+        machineService.getMachineName(), machineService.getMachineType());
     return machine;
   }
 }

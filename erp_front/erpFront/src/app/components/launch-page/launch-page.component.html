@@ -36,11 +36,16 @@
         <!-- processName Column -->
         <ng-container matColumnDef="processName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Process Name</th>
-          <td mat-cell *matCellDef="let row"> {{row.processName}}
+          <td mat-cell *matCellDef="let row">
+
+            {{row.processName}}
+
 
             <div *ngIf="row.processName == null"> <!-- row.process == null  ???? -->
               <h4 style="color: red"> No Process </h4>
             </div>
+
+
           </td>
         </ng-container>
 
