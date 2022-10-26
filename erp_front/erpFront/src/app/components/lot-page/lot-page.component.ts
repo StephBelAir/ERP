@@ -53,10 +53,23 @@ export class LotPageComponent implements OnInit {
       .subscribe({
         next: (res) => {
           //console.log(res);
-//          let proc: any = {};
-//          proc.processName = res.process.processName;
-          //this.dataSource = new MatTableDataSource(pro);
-          this.dataSource = new MatTableDataSource(res);
+          let list:any = [];
+          res.forEach((el: any)=>{
+            let proc: any = {};
+            if(el.process != null){
+              proc.processName = el.process.processName;
+            }
+            proc.id = el.id;
+            proc.productName = el.productName;
+            proc.width = el.width;
+            proc.quantity = el.quantity;
+            proc.length = el.length;
+            proc.type = el.type;
+            list.push(proc);
+          })
+
+          this.dataSource = new MatTableDataSource(list);
+        //  this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort
           console.log(res)

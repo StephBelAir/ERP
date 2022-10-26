@@ -38,21 +38,11 @@
         <!-- processName Column -->
         <ng-container matColumnDef="processName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Process Name</th>
-          <td mat-cell *matCellDef="let row">  {{row.process}}
+          <td mat-cell *matCellDef="let row"> {{row.processName}}
 
-            <div *ngFor="let pro of row.process | async">
-              <h4> {{pro.process}} </h4>
+            <div *ngIf="row.processName == null">
+              <h4 style="color: red"> No Process </h4>
             </div>
-
-
-            <div *ngIf="row.process == null">
-              <h4 style="color: darkred"> No Process </h4>
-            </div>
-
-            <div *ngIf="row.process != null">
-              <h4> Process </h4>
-            </div>
-
           </td>
         </ng-container>
 
