@@ -67,9 +67,7 @@ export class LotPageComponent implements OnInit {
             proc.type = el.type;
             list.push(proc);
           })
-
           this.dataSource = new MatTableDataSource(list);
-        //  this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort
           console.log(res)

@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class LaunchPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'productName', 'width', 'startDate', 'endDate', 'estimateEndDate', 'actualEndDate'];
+  displayedColumns: string[] = ['id', 'productName', 'width', 'processName', 'startDate', 'endDate', 'estimateEndDate', 'actualEndDate'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -52,15 +52,31 @@ export class LaunchPageComponent implements OnInit {
     this.lotService.getLot()
       .subscribe({
         next: (res) => {
-          console.log(res);
-          this.dataSource = new MatTableDataSource<any>(res);
+          //console.log(res);
+          let list:any = [];
+          res.forEach((el: any)=>{
+            let proc: any = {};
+            if(el.process != null){
+              proc.processName = el.process.processName;
+            }
+            proc.id = el.id;
+            proc.productName = el.productName;
+            proc.width = el.width;
+            proc.startDate = el.startDate;
+            proc.endDate = el.endDate;
+            proc.estimateEndDate = el.estimateEndDate;
+            proc.actualEndDate = el.actualEndDate;
+            list.push(proc);
+          })
+          this.dataSource = new MatTableDataSource(list);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort
+          console.log(res)
+
         },
         error: (err) => {
           Swal.fire({ title:"Error while fetching the Records !!",
-            icon: "error",})
-        }
+            icon: "error",})        }
       })
   }
 

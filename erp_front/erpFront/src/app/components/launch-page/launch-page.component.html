@@ -33,6 +33,17 @@
           <td mat-cell *matCellDef="let row"> {{row.width}} </td>
         </ng-container>
 
+        <!-- processName Column -->
+        <ng-container matColumnDef="processName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Process Name</th>
+          <td mat-cell *matCellDef="let row"> {{row.processName}}
+
+            <div *ngIf="row.processName == null"> <!-- row.process == null  ???? -->
+              <h4 style="color: red"> No Process </h4>
+            </div>
+          </td>
+        </ng-container>
+
         <!-- startDate Column -->
         <ng-container matColumnDef="startDate">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Launch Date</th>

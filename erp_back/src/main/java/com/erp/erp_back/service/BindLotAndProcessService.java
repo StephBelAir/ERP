@@ -6,8 +6,8 @@ public class BindLotAndProcessService {
 
   private int processId;
 
-  public BindLotAndProcessService() {
-  }
+
+
 
   public int getId() {
     return id;
@@ -17,11 +17,11 @@ public class BindLotAndProcessService {
     this.id = id;
   }
 
-  public int getProcessName() {
+  public int getProcessId() {
     return processId;
   }
 
-  public void setProcessName(int processName) {
+  public void setProcessId(int processId) {
     this.processId = processId;
   }
 
