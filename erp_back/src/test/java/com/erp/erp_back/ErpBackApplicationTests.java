@@ -1,7 +1,12 @@
 package com.erp.erp_back;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.erp.erp_back.model.Lot;
+import com.erp.erp_back.model.Machine;
+import com.erp.erp_back.model.Process;
 import com.erp.erp_back.repository.LotRepository;
+import com.erp.erp_back.repository.MachineRepository;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -17,10 +22,63 @@ class ErpBackApplicationTests {
 
 	@Autowired
 	private LotRepository lotRepository;
-
+	private MachineRepository machineRepository;
 
 
 	/**
+	 * Test de productionTimeTotalForOneParts()
+	 *
+	 */
+	@Test
+	@Rollback(value = false)
+	void testProductionTimeTotalForOneParts() throws Exception{
+
+		// ARRANGE
+		int prodTime1 = 5;
+		final Machine machine1 = new Machine(13, prodTime1);
+
+		int prodTime2 = 10;
+		final Machine machine2 = new Machine(14, prodTime2);
+
+		int prodTime3 = 15;
+		final Machine machine3 = new Machine(15, prodTime3);
+
+		int totalProdTime = prodTime1+prodTime2+prodTime3;
+
+		final Process process = new Process(3);
+		process.addMachine(machine1);
+		process.addMachine(machine2);
+		process.addMachine(machine3);
+
+		// ACT
+		final int productionTimeTotalForOnePartsCheck = process.getProductionTimeTotalForOneParts();
+
+		// ASSERT
+		assertEquals(totalProdTime, productionTimeTotalForOnePartsCheck);
+	}
+
+	/**
+	 * Test non pertinent
+	 * Test ProductTIme d'un constructeur sans inteligence
+	 *
+	 */
+	@Test
+	@Rollback(value = false)
+	void testProdTime() throws Exception{
+		// ARRANGE
+		int prodTime = 5;
+		final Machine machine = new Machine(13, prodTime);
+
+		// ACT
+		final int prodTimeCheck = machine.getProductionTime();
+
+		// ASSERT
+		assertEquals(prodTime, prodTimeCheck);
+	}
+
+
+	/**
+	 * Test non pertinent
 	 * Test CRUD Save
 	 * 2 lots avec Id1 et Id2 sont créé au lancement de ERPBackApplication, l'Id 3 sera donc testé
 	 */
@@ -43,6 +101,7 @@ class ErpBackApplicationTests {
 	}
 
 	/**
+	 * Test non pertinent
 	 * Test CRUD GetByID
 	 */
 	@Test
@@ -59,6 +118,7 @@ class ErpBackApplicationTests {
 	}
 
 	/**
+	 * Test non pertinent
 	 * Test CRUD GetALL
 	 */
 	@Test
@@ -74,7 +134,10 @@ class ErpBackApplicationTests {
 		Assertions.assertThat(lot.size()).isGreaterThan(a);
 	}
 
-	//Todo add patch Test
+	/**
+	 * Test non pertinent
+	 * Test DateTime
+	 */
 
 	@Test
 	@Order(4)

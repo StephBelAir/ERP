@@ -37,6 +37,11 @@ public class Machine implements Serializable {
     this.machineId = machineId;
   }
 
+  public Machine(int machineId, int productionTime) {
+    this.machineId = machineId;
+    this.productionTime = productionTime;
+  }
+
   public Machine(String machineName){
     this.machineName = machineName;
   }

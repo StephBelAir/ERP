@@ -50,6 +50,11 @@ public class Process implements Serializable {
     this.processId = processId;
   }
 
+  public Process(int processId, List<Machine> machine) {
+    this.processId = processId;
+    this.machine = machine;
+  }
+
   /**
    * @param processName
    * @param machine
