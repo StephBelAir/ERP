@@ -42,8 +42,9 @@ class ErpBackApplicationTests {
    * Test UNITAIRE de productionTimeTotalForOneParts()
    */
   @Test
+  @Order(1)
   @Rollback(value = false)
-  void testProductionTimeTotalForOneParts() throws Exception {
+  void testProductionTimeTotalForOnePartsUnit() throws Exception {
 
     // ARRANGE
     int prodTime1 = 5;
@@ -73,13 +74,14 @@ class ErpBackApplicationTests {
    * Test FONCTIONNEL de productionTimeTotalForOneParts()
    */
   @Test
+  @Order(2)
   @Rollback(value = false)
-  void testTest() throws Exception {
+  void testProductionTimeTotalForOnePartsFunctional() throws Exception {
     mockMvc.perform(get("/processes/1"))
         .andDo(print()).andExpect(status().isOk())
         .andExpect(jsonPath("$.productionTimeTotalForOneParts").value(6))
         .andExpect(jsonPath("$.machine.length()").value(3))
-        .andDo(print());
+        .andReturn();
   }
 
   /*--====================  Tests non pertinent   ====================--*/
@@ -90,6 +92,7 @@ class ErpBackApplicationTests {
    * Test ProductTIme d'un constructeur sans inteligence
    */
   @Test
+  @Order(3)
   @Rollback(value = false)
   void testProdTime() throws Exception {
     // ARRANGE
@@ -110,7 +113,7 @@ class ErpBackApplicationTests {
    * 2 lots avec Id1 et Id2 sont créé au lancement de ERPBackApplication, l'Id 3 sera donc testé
    */
   @Test
-  @Order(1)
+  @Order(4)
   @Rollback(value = false)
   void saveLotTest() {
     // ARRANGE
@@ -132,7 +135,7 @@ class ErpBackApplicationTests {
    * Test CRUD GetByID
    */
   @Test
-  @Order(2)
+  @Order(5)
   void getByIdLotTest() {
     // ARRANGE
     int a = 1;
@@ -149,7 +152,7 @@ class ErpBackApplicationTests {
    * Test CRUD GetALL
    */
   @Test
-  @Order(3)
+  @Order(6)
   void getAllLotTest() {
     // ARRANGE
     int a = 0;
@@ -167,7 +170,7 @@ class ErpBackApplicationTests {
    */
 
   @Test
-  @Order(4)
+  @Order(7)
   void patchLotStartDate() {
 
     // ARRANGE
